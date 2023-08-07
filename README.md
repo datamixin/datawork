@@ -16,7 +16,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 -->
 <p align="center">
   
-  <h1 align="center">Datamixin</h2>
+  <h1 align="center">Datamixin Datawork</h2>
 
   <p align="center">
     Your Predictive Apps With Low Code Platform
@@ -32,7 +32,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 </p>
 
 ## 🔔 Stay up to date
-Datamixin launched its v1.0.0 on Agustus 1st, 2023. Lots of new features are coming, and are generally released on a bi-weekly basis. Watch updates of this repository to be notified of future updates.
+Datawork launched its v1.0.0 on Agustus 1st, 2023. Lots of new features are coming, and are generally released on a bi-weekly basis. Watch updates of this repository to be notified of future updates.
 
 
 ## 🔖 License
@@ -52,5 +52,5 @@ To start using Datamixin, run the following commands in a shell:
 ```
 mkdir datamixin
 cd datamixin
-curl https://raw.githubusercontent.com/datamixin/datamixin/master/docker-compose.yml >> docker-compose.yml && docker compose up -d --remove-orphans
+curl https://raw.githubusercontent.com/datamixin/datawork/master/docker-compose.yml >> docker-compose.yml && docker compose up -d --remove-orphans
 ```
