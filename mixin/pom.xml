@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.andia.mixin</groupId>
+	<artifactId>mixin</artifactId>
+	<version>1</version>
+	<packaging>pom</packaging>
+	<name>Mixin</name>
+
+	<modules>
+		<module>../mixin-base</module>
+		<module>../mixin-bekasi</module>
+		<module>../mixin-bekasi-quarkus</module>
+		<module>../mixin-bekasi-webface</module>
+		<module>../mixin-bekasi-pagar</module>
+		<module>../mixin-lawang</module>
+		<module>../mixin-lawang-jdbc</module>
+		<module>../mixin-lawang-webface</module>
+		<module>../mixin-padang</module>
+		<module>../mixin-padang-dumai</module>
+		<module>../mixin-padang-garut</module>
+		<module>../mixin-padang-malang</module>
+		<module>../mixin-padang-quarkus</module>
+		<module>../mixin-padang-rinjani</module>
+		<module>../mixin-padang-webface</module>
+		<module>../mixin-padang-vegazoo</module>
+		<module>../mixin-jepara</module>
+		<module>../mixin-raung</module>
+		<module>../mixin-raung-jdbc</module>
+		<module>../mixin-pariaman</module>
+		<module>../mixin-pariaman-jdbc</module>
+		<module>../mixin-sleman</module>
+		<module>../mixin-sleman-webface</module>
+		<module>../mixin-webface</module>
+	</modules>
+
+	<properties>
+		<compiler-plugin.version>3.8.1</compiler-plugin.version>
+		<compiler-source.version>1.8</compiler-source.version>
+		<compiler-target.version>1.8</compiler-target.version>
+		<maven.compiler.parameters>true</maven.compiler.parameters>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+	<build>
+
+		<finalName>${project.artifactId}-${project.version}</finalName>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${compiler-plugin.version}</version>
+				<configuration>
+					<source>${compiler-source.version}</source>
+					<target>${compiler-target.version}</target>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+</project>

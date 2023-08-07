@@ -1,0 +1,708 @@
+// Copyright (c) 2020-2023 Datamixin.
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.andia.mixin.padang.garut";
+option java_outer_classname = "DataminerProto";
+
+package dataminer;
+
+import "value.proto";
+import "evaluate.proto";
+
+service Dataminer {
+
+	// ========================================================================
+	// PREPARE
+	// ========================================================================
+
+	rpc prepareProject (ProjectPrepareRequest) returns (PrepareResponse) {}
+
+	rpc prepareDataset (SheetPrepareRequest) returns (PrepareResponse) {}
+	
+	rpc prepareIngestion (SheetPrepareRequest) returns (PrepareResponse) {}
+	
+	rpc preparePreparation (SheetPrepareRequest) returns (PrepareResponse) {}
+	
+	rpc prepareBuilder (SheetPrepareRequest) returns (PrepareResponse) {}
+	
+	rpc prepareBuilderVariable (BuilderVariablePrepareRequest) returns (PrepareResponse) {}
+
+	rpc prepareBuilderVariablePreparation (BuilderVariablePrepareRequest) returns (PrepareResponse) {}
+	
+	rpc prepareOutlook (SheetPrepareRequest) returns (PrepareResponse) {}
+	
+	rpc prepareOutcome (OutletPrepareRequest) returns (PrepareResponse) {}
+	
+	rpc prepareFigure (OutletPrepareRequest) returns (PrepareResponse) {}
+	
+	rpc prepareFigureVariable (FigureVariablePrepareRequest) returns (PrepareResponse) {}
+
+	rpc copyProject (ProjectCopyRequest) returns (CopyResponse) {}
+
+	// ========================================================================
+	// ASSIGN
+	// ========================================================================
+
+	rpc assignReceiptInput (ReceiptInputAssignRequest) returns (AssignResponse) {}
+
+	rpc assignBuilderVariableExpression (BuilderVariableExpressionAssignRequest) returns (AssignResponse) {}
+
+	rpc assignOutcomeExpression (OutcomeExpressionAssignRequest) returns (AssignResponse) {}
+
+	rpc assignFigureVariableExpression (FigureVariableExpressionAssignRequest) returns (AssignResponse) {}
+
+	// ========================================================================
+	// RENAME
+	// ========================================================================
+
+	rpc renameSheet (SheetRenameRequest) returns (RenameResponse) {}
+
+	rpc renameReceiptInput (ReceiptInputRenameRequest) returns (RenameResponse) {}
+
+	rpc renameBuilderVariable (BuilderVariableRenameRequest) returns (RenameResponse) {}
+
+	rpc renameOutlet (OutletRenameRequest) returns (RenameResponse) {}
+
+	rpc renameFigureVariable (FigureVariableRenameRequest) returns (RenameResponse) {}
+
+	// ========================================================================
+	// INSERT
+	// ========================================================================
+
+	rpc insertPreparationMutation (DatasetMutationInsertRequest) returns (InsertResponse) {}
+
+	rpc insertDatasetDisplayMutation (DatasetMutationInsertRequest) returns (InsertResponse) {}
+
+	rpc insertPreparationDisplayMutation (DatasetMutationInsertRequest) returns (InsertResponse) {}
+
+	rpc insertBuilderVariableMutation (BuilderVariableMutationInsertRequest) returns (InsertResponse) {}
+
+	rpc insertBuilderVariableDisplayMutation (BuilderVariableMutationInsertRequest) returns (InsertResponse) {}
+
+	// ========================================================================
+	// SELECT
+	// ========================================================================
+
+	rpc selectIngestionResult (IngestionResultSelectRequest) returns (SelectResponse) {}
+
+	rpc selectPreparationMutationResult (PreparationMutationResultSelectRequest) returns (SelectResponse) {}
+
+	rpc selectDatasetResult (DatasetSelectRequest) returns (SelectResponse) {}
+
+	rpc selectBuilderVariablePreparationResult (BuilderVariablePreparationResultSelectRequest) returns (SelectResponse) {}
+
+	rpc selectBuilderVariableMutationResult (BuilderVariableMutationResultSelectRequest) returns (SelectResponse) {}
+
+	rpc evaluateOnProject (OnProjectEvaluateRequest) returns (EvaluateResponse) {}
+	
+	rpc evaluateOnForesee (OnForeseeEvaluateRequest) returns (EvaluateResponse) {}
+	
+	rpc evaluateOnPreparation (OnPreparationEvaluateRequest) returns (EvaluateResponse) {}
+
+	rpc evaluateOnFigure (OnFigureEvaluateRequest) returns (EvaluateResponse) {}
+
+	rpc evaluateOnBuilderVariablePreparation (OnBuilderVariablePreparationEvaluateRequest) returns (EvaluateResponse) {}
+
+	// ========================================================================
+	// EXPORT
+	// ========================================================================
+
+	rpc listDatasetExportFormat (DatasetExportFormatListRequest) returns (FormatListResponse) {}
+
+	rpc listBuilderVariableExportFormat (BuilderVariableExportFormatListRequest) returns (FormatListResponse) {}
+
+	rpc listOutcomeExportFormat (OutcomeExportFormatListRequest) returns (FormatListResponse) {}
+
+	rpc listFigureVariableExportFormat (FigureVariableExportFormatListRequest) returns (FormatListResponse) {}
+
+	rpc exportDatasetResult (DatasetExportRequest) returns (ExportResponse) {}
+
+	rpc exportBuilderVariableResult (BuilderVariableExportRequest) returns (ExportResponse) {}
+	
+	rpc exportOutcomeResult (OutcomeExportRequest) returns (ExportResponse) {}
+
+	rpc exportFigureVariableResult (FigureVariableExportRequest) returns (ExportResponse) {}
+	
+	// ========================================================================
+	// APPLY
+	// ========================================================================
+
+	rpc computeReceipt (ReceiptComputeRequest) returns (ApplyResponse) {}
+	
+	rpc computePreparation (PreparationComputeRequest) returns (ApplyResponse) {}
+	
+	rpc computeBuilderVariable (BuilderVariableComputeRequest) returns (ApplyResponse) {}
+
+	rpc computeBuilderVariablePreparation (BuilderVariableComputeRequest) returns (ApplyResponse) {}
+
+	rpc computeOutcome (OutcomeComputeRequest) returns (ApplyResponse) {}
+	
+	rpc computeFigureVariable (FigureVariableComputeRequest) returns (ApplyResponse) {}
+	
+	rpc applySourceResult (SourceResultApplyRequest) returns (ApplyResponse) {}
+
+	rpc applyBuilderVariablePreparation (BuilderVariableComputeRequest) returns (ApplyResponse) {}
+
+	// ========================================================================
+	// REMOVE
+	// ========================================================================
+
+	rpc removePreparationMutation (DatasetMutationRemoveRequest) returns (RemoveResponse) {}
+
+	rpc removePreparationDisplayMutation (DatasetMutationRemoveRequest) returns (RemoveResponse) {}
+
+	rpc removeDatasetDisplayMutation (DatasetMutationRemoveRequest) returns (RemoveResponse) {}
+
+	rpc removeReceiptInput (ReceiptInputRemoveRequest) returns (RemoveResponse) {}
+
+	rpc removeBuilderVariable (BuilderVariableRemoveRequest) returns (RemoveResponse) {}
+
+	rpc removeBuilderVariableMutation (BuilderVariableMutationRemoveRequest) returns (RemoveResponse) {}
+
+	rpc removeBuilderVariableDisplayMutation (BuilderVariableMutationRemoveRequest) returns (RemoveResponse) {}
+
+	rpc removeOutlet (OutletRemoveRequest) returns (RemoveResponse) {}
+	
+	rpc removeFigureVariable (FigureVariableRemoveRequest) returns (RemoveResponse) {}
+
+	rpc removeFigureVariableMutation (FigureVariableMutationRemoveRequest) returns (RemoveResponse) {}
+	
+	rpc removeSheet (SheetRemoveRequest) returns (RemoveResponse) {}
+
+	rpc removeProject (ProjectRemoveRequest) returns (RemoveResponse) {}
+	
+}
+
+// ========================================================================
+// KEY
+// ========================================================================
+
+message ProjectKey {
+
+	string project = 1;
+
+}
+
+message SheetKey {
+
+	string project = 1;
+	string sheet = 2;
+
+}
+
+message BuilderVariableKey {
+
+	string project = 1;
+	string sheet = 2;
+	string variable = 3;
+
+}
+
+message ReceiptInputKey {
+
+	string project = 1;
+	string sheet = 2;
+	string input = 3;
+
+}
+
+message OutletKey {
+
+	string project = 1;
+	string sheet = 2;
+	string outlet = 3;
+
+}
+
+message FigureVariableKey {
+
+	string project = 1;
+	string sheet = 2;
+	string outlet = 3;
+	string variable = 4;
+
+}
+
+// ========================================================================
+// PREPARE
+// ========================================================================
+
+message ProjectPrepareRequest {
+	
+	ProjectKey key = 1;
+	bool create = 2;
+
+}
+
+message SheetPrepareRequest {
+	
+	SheetKey key = 1;
+	bool create = 2;
+
+}
+
+message BuilderVariablePrepareRequest {
+	
+	BuilderVariableKey key = 1;
+	bool create = 2;
+
+}
+
+message ReceiptInputPrepareRequest {
+
+	ReceiptInputKey key = 1;
+	bool create = 2;
+
+}
+
+message OutletPrepareRequest {
+	
+	OutletKey key = 1;
+	bool create = 2;
+
+}
+
+message FigureVariablePrepareRequest {
+
+	FigureVariableKey key = 1;
+	bool create = 2;
+
+}
+
+message PrepareResponse {
+	
+	bool created = 1;
+
+}
+
+message ProjectCopyRequest {
+	
+	ProjectKey source = 1;
+	ProjectKey target = 2;
+
+}
+
+message CopyResponse {
+	
+	bool copied = 1;
+
+}
+
+// ========================================================================
+// RENAME
+// ========================================================================
+
+message SheetRenameRequest {
+	
+	ProjectKey key = 1;
+	string oldName = 2;
+	string newName = 3;
+
+}
+
+message ReceiptInputRenameRequest {
+	
+	SheetKey key = 1;
+	string oldName = 2;
+	string newName = 3;
+
+}
+
+message BuilderVariableRenameRequest {
+	
+	SheetKey key = 1;
+	string oldName = 2;
+	string newName = 3;
+
+}
+
+message OutletRenameRequest {
+	
+	SheetKey key = 1;
+	string oldName = 2;
+	string newName = 3;
+
+}
+
+message FigureVariableRenameRequest {
+	
+	OutletKey key = 1;
+	string oldName = 2;
+	string newName = 3;
+
+}
+
+message RenameResponse {
+	
+	bool renamed = 1;
+	string message = 2;
+
+}
+
+// ========================================================================
+// ASSIGN
+// ========================================================================
+
+message ReceiptInputAssignRequest {
+
+	ReceiptInputKey key = 1;
+	EvaluateExpression expression = 2;
+
+}
+
+message BuilderVariableExpressionAssignRequest {
+
+	BuilderVariableKey key = 1;
+	EvaluateExpression expression = 2;
+
+}
+
+message OutcomeExpressionAssignRequest {
+
+	OutletKey key = 1;
+	EvaluateExpression expression = 2;
+
+}
+
+message FigureVariableExpressionAssignRequest {
+
+	FigureVariableKey key = 1;
+	EvaluateExpression expression = 2;
+
+}
+
+message AssignResponse {
+	
+	bool assigned = 1;
+
+}
+
+// ========================================================================
+// INSERT
+// ========================================================================
+
+message DatasetMutationInsertRequest {
+	
+	SheetKey key = 1;
+	int32 index = 2;
+	Order order = 3;
+
+}
+
+message BuilderVariableMutationInsertRequest {
+
+	BuilderVariableKey key = 1;
+	int32 index = 2;
+	Order order = 3;
+}
+
+message InsertResponse {
+	
+	bool modified = 1;
+
+}
+
+// ========================================================================
+// SELECT
+// ========================================================================
+
+message IngestionResultSelectRequest {
+	
+	SheetKey key = 1;
+	Order order = 2;
+
+}
+
+message PreparationMutationResultSelectRequest {
+	
+	SheetKey key = 1;
+	int32 index = 2;
+	Order order = 3;
+
+}
+
+message DatasetSelectRequest {
+	
+	SheetKey key = 1;
+	Order order = 2;
+	bool display = 3;
+
+}
+
+message PreparationSelectRequest {
+	
+	SheetKey key = 1;
+	Order order = 2;
+
+}
+
+message Order {
+
+	string name = 1;
+	map<string, EvaluateExpression> options = 2;
+	
+}
+
+message OnProjectEvaluateRequest {
+
+	ProjectKey key = 1;
+	EvaluateExpression expression = 2;
+	
+}
+
+message OnForeseeEvaluateRequest {
+
+	SheetKey key = 1;
+	EvaluateExpression expression = 2;
+	
+}
+
+message OnPreparationEvaluateRequest {
+
+	SheetKey key = 1;
+	int32 index = 2;
+	EvaluateExpression expression = 3;
+	
+}
+
+message OnFigureEvaluateRequest {
+
+	OutletKey key = 1;
+	EvaluateExpression expression = 2;
+	
+}
+
+message BuilderVariablePreparationResultSelectRequest {
+	
+	BuilderVariableKey key = 1;
+	Order order = 2;
+
+}
+
+message BuilderVariableMutationResultSelectRequest {
+	
+	BuilderVariableKey key = 1;
+	int32 index = 2;
+	Order order = 3;
+
+}
+
+message OnBuilderVariablePreparationEvaluateRequest {
+
+	BuilderVariableKey key = 1;
+	EvaluateExpression expression = 2;
+	
+}
+
+message SelectResponse {
+	
+	DataminerValue value = 1;
+
+}
+
+// ========================================================================
+// APPLY
+// ========================================================================
+
+message ReceiptComputeRequest {
+
+	SheetKey key = 1;
+
+}
+
+message PreparationComputeRequest {
+
+	SheetKey key = 1;
+
+}
+
+message BuilderVariableComputeRequest {
+
+	BuilderVariableKey key = 1;
+
+}
+
+message OutcomeComputeRequest {
+
+	OutletKey key = 1;
+
+}
+
+message FigureVariableComputeRequest {
+
+	FigureVariableKey key = 1;
+
+}
+
+message SourceResultApplyRequest {
+
+	SheetKey key = 1;
+
+}
+
+message ApplyResponse {
+	
+	bool applied = 1;
+
+}
+
+message ExecuteResponse {
+	
+	bool executed = 1;
+
+}
+
+// ========================================================================
+// EXPORT
+// ========================================================================
+
+message DatasetExportFormatListRequest {
+
+	SheetKey key = 1;
+
+}
+
+message FigureVariableExportFormatListRequest {
+
+	FigureVariableKey key = 1;
+
+}
+
+message BuilderVariableExportFormatListRequest {
+
+	BuilderVariableKey key = 1;
+
+}
+
+message OutcomeExportFormatListRequest {
+
+	OutletKey key = 1;
+
+}
+
+message DatasetExportRequest {
+
+	SheetKey key = 1;
+	string format = 2;
+
+}
+
+message BuilderVariableExportRequest {
+
+	BuilderVariableKey key = 1;
+	string format = 2;
+
+}
+
+message OutcomeExportRequest {
+
+	OutletKey key = 1;
+	string format = 2;
+
+}
+
+message FigureVariableExportRequest {
+
+	FigureVariableKey key = 1;
+	string format = 2;
+
+}
+
+message FormatListResponse {
+
+	DataminerObject list = 1;
+
+}
+
+message ExportResponse {
+
+	DataminerValue value = 1;
+
+}
+
+// ========================================================================
+// REMOVE
+// ========================================================================
+
+message ProjectRemoveRequest {
+	
+	ProjectKey key = 1;
+
+}
+
+message SheetRemoveRequest {
+	
+	SheetKey key = 1;
+
+}
+
+message DatasetMutationRemoveRequest {
+	
+	SheetKey key = 1;
+	int32 index = 2;
+
+}
+
+message ReceiptInputRemoveRequest {
+
+	ReceiptInputKey key = 1;
+
+}
+
+message BuilderVariableRemoveRequest {
+
+	BuilderVariableKey key = 1;
+
+}
+
+message BuilderVariableMutationRemoveRequest {
+
+	BuilderVariableKey key = 1;
+	int32 index = 2;
+
+}
+
+message OutletRemoveRequest {
+
+	OutletKey key = 1;
+
+}
+
+message FigureVariableRemoveRequest {
+
+	FigureVariableKey key = 1;
+
+}
+
+message FigureVariableMutationRemoveRequest {
+
+	FigureVariableKey key = 1;
+	int32 index = 2;
+
+}
+
+message RemoveResponse {
+	
+	bool removed = 1;
+
+}
+
+message EvaluateResponse {
+	
+	DataminerValue value = 1;
+
+}

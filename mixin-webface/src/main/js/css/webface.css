@@ -1,0 +1,451 @@
+/*
+Copyright (c) 2020-2023 Datamixin.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+*/
+* {
+	-webkit-user-select: none; /* Chrome all / Safari all */
+	-moz-user-select: none; /* Firefox all */
+	-ms-user-select: none; /* IE 10+ */
+	user-select: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.btn-sm, .btn-group-sm>.btn {
+	padding: 5px 10px;
+	font-size: 12px;
+	line-height: 1.5;
+	border-radius: 3px;
+}
+
+.btn-default.disabled {
+	cursor: default;
+}
+
+.btn-default.disabled:focus {
+	outline: none;
+}
+
+.widgets-label {
+	outline: none;
+	line-height: 24px;
+	white-space: nowrap;
+}
+
+.widgets-webFontIcon {
+	text-align: center;
+}
+
+.widgets-button:disabled {
+	border-color: #CCC;
+	color: #CCC;
+	cursor: default;
+}
+
+.widgets-combo {
+	width: 120px;
+	height: 26px;
+	text-indent: 6px;
+	border-radius: 3px;
+	border-color: #D8D8D8;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-image:
+		url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+	background-repeat: no-repeat;
+	background-position-x: 100%;
+	background-position-y: 0px;
+}
+
+.widgets-combo:focus {
+	outline: none;
+	background-color: #fff8c6;
+}
+
+.widgets-combo:disabled {
+	border-color: #CCC;
+	color: #CCC;
+}
+
+.widgets-text {
+	border: 1px solid #D8D8D8;
+	height: 26px;
+	background-color: #FFF;
+	border-radius: 3px;
+	text-indent: 4px;
+	-moz-user-select: text;
+	user-select: text;
+}
+
+.widgets-text:disabled {
+	border-color: #CCC;
+	color: #CCC;
+}
+
+.widgets-text:focus {
+	outline: none;
+	border-color: #88B6FF;
+	background-color: #fff8c6;
+}
+
+.widgets-textarea {
+	border-radius: 3px;
+	white-space: pre;
+	font-family: monospace;
+	font-size: 12px;
+	overflow: auto;
+	line-height: 18px;
+}
+
+.widgets-textarea:focus {
+	outline: none;
+	border-color: #88B6FF;
+	background-color: #fff8c6;
+}
+
+/* The container */
+.widgets-check {
+	display: block;
+	position: absolute;
+	padding-left: 20px;
+	cursor: pointer;
+	user-select: none;
+	font-weight: normal;
+}
+
+/* Hide the browser's default checkbox */
+.widgets-check input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+	text-indent: 2px;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translate(0, -50%);
+	height: 15px;
+	width: 15px;
+	border: 1px solid #888;
+	border-radius: 3px;
+	background-color: #FFF;
+}
+
+/* On mouse-over, add a grey background color */
+.widgets-check:hover input ~ .checkmark {
+	border: 1px solid #2196F3;
+	background-color: #2196F3;
+}
+
+/* When the checkbox is checked, add a blue background */
+.widgets-check input:checked ~ .checkmark {
+	border: 1px solid #2196F3;
+	background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+/* Show the checkmark when checked */
+.widgets-check input:checked ~ .checkmark:after {
+	display: block;
+}
+
+/* Style the checkmark/indicator */
+.widgets-check .checkmark:after {
+	left: 4px;
+	top: 0px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+
+.widgets-slider *, .widgets-slider.ui-widget-content {
+	background-image: none !important;
+}
+
+.widget-tabFolder-nav-button {
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.widget-tabFolder-nav-button:hover {
+	color: #ff902a;
+}
+
+.viewers-tableViewer {
+	background-color: #F8F8F8;
+}
+
+.viewers-tableViewer-viewPort {
+	background-color: #FFFFFF;
+}
+
+.viewers-tableViewer-body:focus {
+	outline: 0px;
+}
+
+.viewers-tableViewer-header {
+	background-color: #F8F8F8;
+	border-bottom-style: solid;
+	border-bottom-color: #E8E8E8;
+}
+
+.viewers-tableViewer-header-marker {
+	border-right-style: solid;
+	border-right-color: #E8E8E8;
+}
+
+.viewers-tableViewer-header-marker.selected {
+	background-color: #E0E0E0;
+	color: #444;
+}
+
+.viewers-tableViewer-header-column {
+	border-right-style: solid;
+	border-right-color: #E8E8E8;
+}
+
+.viewers-tableViewer-header-column.selected {
+	background-color: #E0E0E0;
+	color: #444;
+}
+
+.viewers-tableViewer-markersContainer-window {
+	border-right-style: solid;
+	border-right-color: #E8E8E8;
+}
+
+.viewers-tableViewer-marker {
+	color: #888;
+	background-color: #F8F8F8;
+	border-bottom-style: solid;
+	border-bottom-color: #E8E8E8;
+}
+
+.viewers-tableViewer-marker.selected {
+	background-color: #E8E8E8;
+	color: #444;
+}
+
+.viewers-tableViewer-cell {
+	border-right-style: solid;
+	border-bottom-style: solid;
+}
+
+.viewers-tableViewer-cell:focus {
+	outline: 0px;
+	background-color: #FFFCCC;
+}
+
+.viewers-tableViewer-cell.selected {
+	background-color: #B8DCFF;
+}
+
+.viewers-tableViewer-cell.lineShow {
+	border-right-color: #F0F0F0;
+	border-bottom-color: #F0F0F0;
+}
+
+.viewers-tableViewer-cell.lineShow.selected {
+	border-right-color: #F0F0F0;
+	border-bottom-color: #F0F0F0;
+}
+
+.viewers-tableViewer-cell.lineHide {
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+}
+
+.viewers-listViewer {
+	border: 1px solid #D8D8D8;
+	background-color: #FFF;
+	border-radius: 3px;
+}
+
+.viewers-listViewer-item:hover {
+	background-color: #F2F2F2;
+}
+
+.widgets-scrollBar-handler-control {
+	border: 2px solid #F8F8F8;
+	border-radius: 6px;
+	background-color: #E8E8E8;
+}
+
+.scrollable:hover>.widgets-scrollBar>.widgets-scrollBar-handler-container>.widgets-scrollBar-handler-control
+	{
+	background-color: #C8C8C8;
+}
+
+.widgets-webFontIcon {
+	overflow: hidden;
+}
+
+/** SWITCH **/
+.onoffswitch {
+	position: relative;
+	user-select: none;
+}
+
+.onoffswitch-checkbox {
+	display: none;
+}
+
+.onoffswitch-label {
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+	font-weight: normal;
+	border: 1px solid transparent;
+	border-radius: 15px;
+}
+
+.onoffswitch-inner {
+	display: block;
+	width: 200%;
+	margin-left: -100%;
+}
+
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+	display: block;
+	float: left;
+	width: 50%;
+	height: 21px;
+	padding: 0;
+	line-height: 22px;
+	font-size: 12px;
+	box-sizing: border-box;
+	color: white;
+}
+
+.onoffswitch-inner:before {
+	content: attr(on);
+	padding-left: 12px;
+	background-color: #8bbbe4;
+	color: #FFFFFF;
+}
+
+.onoffswitch-inner:after {
+	content: attr(off);
+	padding-right: 12px;
+	background-color: #E8E8E8;
+	color: #888;
+	text-align: right;
+}
+
+.onoffswitch-switch {
+	display: block;
+	width: 17px;
+	margin: 3px;
+	background: #FFFFFF;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 37px;
+	border: 1px solid transparent;
+	border-radius: 18px;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-inner {
+	margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
+	right: 0px;
+}
+
+.dialog-shell:focus {
+	outline: 0px;
+}
+
+.webface-popup-contents {
+	background-color: #F8F8F8;
+}
+
+.menu-popup-separator {
+	border-bottom: 1px dotted #C4C4C4;
+}
+
+.menu-popup-action {
+	background-color: #F8F8F8;
+}
+
+.menu-popup-action:hover {
+	background-color: #CCC;
+}
+
+.slide-backlink>* {
+	color: #6098FF;
+	cursor: pointer;
+}
+
+.slide-backlink:hover>* {
+	color: #FF6830;
+}
+
+.slide-backlink-icon {
+	font-size: 22px;
+}
+
+.pace .pace-activity {
+	top: 7px;
+}
+
+.ui-widget.ui-widget-content * {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+.webface-layout-fill-resize-handler{
+	background-color: transparent;
+}
+
+.webface-layout-fill-resize-handler:hover{
+	background-color: #CCC;	
+}
+
+.wizard-dialog-step-panel.completed .widgets-label, .wizard-dialog-step-panel.completed .widgets-webFontIcon {
+	color: #444;
+}
+
+.wizard-dialog-step-panel.selected .widgets-label, .wizard-dialog-step-panel.selected .widgets-webFontIcon {
+	color: #48F;
+}
+
+.wizard-dialog-step-panel.planned .widgets-label, .wizard-dialog-step-panel.planned .widgets-webFontIcon {
+	color: #888;
+}
+
+.viewers-listViewer-default-label-pane {
+	color: #444;
+}
+
+.viewers-listViewer-default-label-pane.selected {
+	background-color: #D8D8D8;
+}

@@ -1,0 +1,124 @@
+<!--
+-- Copyright (c) 2020-2023 Datamixin.
+--
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+<head>
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="/css/webface.css" rel="stylesheet" type="text/css" />
+<link href="/css/materialdesignicons.css" rel="stylesheet" type="text/css" />
+<style>
+.composite {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+}
+</style>
+</head>
+<body>
+	<script src="/js-lib/jquery.js"></script>
+	<script src="/js-lib/jquery-ui.js"></script>
+	<script src="/js-lib/bootstrap.js"></script>
+	<script src="/js-gen/webface.js"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			var FillLayout = webface.layout.FillLayout;
+			var Composite = webface.widgets.Composite;
+			var TabFolder = webface.widgets.TabFolder;
+			var TabItem = webface.widgets.TabItem;
+			var Label = webface.widgets.Label;
+			var WebFontImage = webface.graphics.WebFontImage;
+			var TableViewer = webface.viewers.TableViewer;
+
+			// Buat composite
+			var composite = new Composite($('.composite'));
+			composite.setLayout(new FillLayout());
+
+			// Buat top folder
+			var topFolder = new TabFolder(composite);
+			var firstTopItem = new TabItem(topFolder);
+			firstTopItem.setText("Label");
+			var firstTopLabel = new Label(topFolder);
+			firstTopLabel.setText("Label");
+			firstTopItem.setControl(firstTopLabel);
+
+			var secondTopItem = new TabItem(topFolder);
+			secondTopItem.setImage(new WebFontImage("mdi", "mdi-filter"));
+			var secondTopLabel = new Label(topFolder);
+			secondTopLabel.setText("Icon");
+			secondTopItem.setControl(secondTopLabel);
+
+			// Buat bottom folder
+			var bottomFolder = new TabFolder(composite, {
+				type : webface.BOTTOM
+			});
+
+			// Bottom item pertama
+			var firstBottomItem = new TabItem(bottomFolder);
+			firstBottomItem.setText("Label");
+			var bottomLabel = new Label(bottomFolder);
+			bottomLabel.setText("Label");
+			firstBottomItem.setControl(bottomLabel);
+
+			// Bottom item kedua
+			var secondItem = new TabItem(bottomFolder);
+			secondItem.setImage(new WebFontImage("mdi", "mdi-filter"));
+
+			var columns = [ "Key", "Type", "Literal" ];
+			var records = [];
+			var storage = Object.keys(window);
+			storage.forEach(function(key) {
+				var value = Object.call(window, key);
+				records.push([ key, typeof (value), value.toString() ]);
+			});
+
+			var labelProvider = {
+				getColumnCount : function(input) {
+					return 3;
+				},
+				getColumnTitle : function(input, index) {
+					return columns[index];
+				},
+				getColumnText : function(record, index) {
+					return record[index];
+				}
+			};
+			var contentProvider = {
+				getElementCount : function() {
+					return records.length;
+				},
+				getElement : function(input, index) {
+					return records[index];
+				},
+			}
+			var viewer = new TableViewer(bottomFolder);
+			viewer.setContentProvider(contentProvider);
+			viewer.setLabelProvider(labelProvider);
+			viewer.setInput(records);
+			secondItem.setControl(viewer);
+
+			// Tampilkan semua-nya
+			composite.pack();
+
+			$(window).bind("resize", function() {
+				composite.pack();
+			});
+		});
+	</script>
+	<div class="composite"></div>
+</body>
+</html>

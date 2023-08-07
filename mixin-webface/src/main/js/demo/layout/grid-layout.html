@@ -1,0 +1,145 @@
+<!--
+-- Copyright (c) 2020-2023 Datamixin.
+--
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+<head>
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+
+<style>
+.composite {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+}
+</style>
+</head>
+<body>
+	<div class="composite"></div>
+	<script src="/js-lib/jquery.js"></script>
+	<script src="/js-lib/jquery-ui.js"></script>
+	<script src="/js-lib/bootstrap.js"></script>
+	<script src="/js-gen/webface.js"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			var GridLayout = webface.layout.GridLayout;
+			var GridData = webface.layout.GridData;
+			var Composite = webface.widgets.Composite;
+			var Button = webface.widgets.Button;
+			var root = $('.composite');
+
+			// Buat composite
+			var composite = new Composite(root);
+			var rootLayout = new GridLayout();
+			rootLayout.numColumns = 3;
+			rootLayout.horizontalSpacing = 4;
+			rootLayout.verticalSpacing = 6;
+			rootLayout.marginWidth = 10;
+			rootLayout.marginHeight = 15;
+			composite.setLayout(rootLayout);
+
+			// Top Left button
+			var topLeftButton = new Button(composite);
+			var topLeftData = new GridData();
+			topLeftData.verticalAlignment = webface.FILL;
+			topLeftButton.setLayoutData(topLeftData);
+			topLeftButton.setText("Top-Left-Button");
+
+			// Top Center button
+			var topCenterButton = new Button(composite);
+			topCenterButton.setText("Top-Center-Button");
+			var topCenterData = new GridData();
+			topCenterData.grabExcessHorizontalSpace = true;
+			topCenterData.verticalIndent = 20;
+			topCenterData.horizontalIndent = 40;
+			topCenterButton.setLayoutData(topCenterData);
+
+			// Top Right button
+			var topRightButton = new Button(composite);
+			var topRightData = new GridData();
+			topRightData.horizontalAlignment = webface.FILL;
+			topRightButton.setLayoutData(topRightData);
+			topRightButton.setText("Top-Right-Button");
+
+			// Middle Left Center composite
+			var middleLeftCenterComposite = new Composite(composite);
+			var middleLeftCenterData = new GridData();
+			middleLeftCenterData.horizontalSpan = 2;
+			middleLeftCenterData.grabExcessHorizontalSpace = true;
+			middleLeftCenterData.grabExcessVerticalSpace = true;
+			middleLeftCenterComposite.setLayoutData(middleLeftCenterData);
+			var middleLeftCenterLayout = new GridLayout();
+			middleLeftCenterLayout.numColumns = 2;
+			middleLeftCenterLayout.marginWidth = 0;
+			middleLeftCenterLayout.marginHeight = 0;
+			middleLeftCenterComposite.setLayout(middleLeftCenterLayout)
+
+			// Middle Left Center - Left button
+			var middleLeftCenterLeftButton = new Button(
+				middleLeftCenterComposite, {
+					"width" : "300px"
+				});
+			middleLeftCenterLeftButton.setText("Middle-Left-Center-Left");
+			var middleLeftCenterLeftData = new GridData();
+			middleLeftCenterLeftData.grabExcessVerticalSpace = true;
+			middleLeftCenterLeftButton.setLayoutData(middleLeftCenterLeftData);
+
+			// Middle Left Center - Right button
+			var middleLeftCenterRightButton = new Button(
+				middleLeftCenterComposite);
+			middleLeftCenterRightButton.setText("Middle-Left-Center-Right");
+			var middleLeftCenterRightData = new GridData();
+			middleLeftCenterRightData.grabExcessHorizontalSpace = true;
+			middleLeftCenterRightData.grabExcessVerticalSpace = true;
+			middleLeftCenterRightButton
+				.setLayoutData(middleLeftCenterRightData);
+
+			// Middle Right button
+			var middleRightButton = new Button(composite);
+			middleRightButton.setText("Middle-Right-Button");
+			var middleRightData = new GridData();
+			middleRightData.verticalSpan = 2;
+			middleRightData.grabExcessVerticalSpace = true;
+			middleRightButton.setLayoutData(middleRightData);
+
+			// Bottom Left button
+			var buttomLeftButton = new Button(composite, {
+				"height" : "100px"
+			});
+			buttomLeftButton.setText("Bottom-Left-Button");
+			var buttomLeftData = new GridData();
+			buttomLeftButton.setLayoutData(buttomLeftData);
+
+			// Bottom Center button
+			var buttomCenterButton = new Button(composite);
+			buttomCenterButton.setText("Bottom-Center-Button");
+			var buttomCenterData = new GridData();
+			buttomCenterData.grabExcessHorizontalSpace = true;
+			buttomCenterButton.setLayoutData(buttomCenterData);
+
+			// Hack karena text belum tampil saat on-ready.
+			setTimeout(function() {
+				composite.pack();
+			}, 100);
+
+			$(window).bind("resize", function() {
+				composite.pack();
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!--
+-- Copyright (c) 2020-2023 Datamixin.
+--
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+<head>
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<style>
+.composite {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+}
+</style>
+</head>
+<body>
+	<script src="/js-lib/jquery.js"></script>
+	<script src="/js-lib/jquery-ui.js"></script>
+	<script src="/js-lib/bootstrap.js"></script>
+	<script src="/js-gen/webface.js"></script>
+	<script type="text/javascript">
+	
+		$(function() {
+
+			var FillLayout = webface.layout.FillLayout;
+			var FillData = webface.layout.FillData;
+			var Composite = webface.widgets.Composite;
+			var Button = webface.widgets.Button;
+			var root = $('.composite');
+
+			// Buat composite
+			var composite = new Composite(root);
+			var rootLayout = new FillLayout();
+			rootLayout.spacing = 4;
+			rootLayout.marginWidth = 10;
+			rootLayout.marginHeight = 15;
+			rootLayout.resizable = true;
+			composite.setLayout(rootLayout);
+
+			// Top composite
+			var top = new Composite(composite);
+			var topLayout = new FillLayout();
+			topLayout.spacing = 20;
+			topLayout.resizable = true;
+			topLayout.type = webface.HORIZONTAL;
+			top.setLayout(topLayout);
+			new Button(top).setText("Top-Left");
+			var topRight = new Button(top);
+			topRight.setText("Top-Right");
+			var topRightData = new FillData();
+			topRightData.weight = 2;
+			topRight.setLayoutData(topRightData);
+
+			// Middle composite
+			var bottom = new Composite(composite);
+			var bottomLayout = new FillLayout();
+			bottomLayout.type = webface.HORIZONTAL;
+			bottom.setLayout(bottomLayout);
+			new Button(bottom).setText("Middle-Left");
+			new Button(bottom).setText("Middle-Right");
+
+			// Bottom button
+			new Button(composite).setText("Bottom-Button");
+
+			// Tampilkan semua-nya
+			composite.pack();
+
+			$(window).bind("resize", function() {
+				composite.pack();
+			});
+		});
+	</script>
+	<div class="composite"></div>
+</body>
+</html>

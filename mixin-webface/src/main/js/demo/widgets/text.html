@@ -1,0 +1,63 @@
+<!--
+-- Copyright (c) 2020-2023 Datamixin.
+--
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+<head>
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="/css/webface.css" rel="stylesheet" type="text/css" />
+<link href="/css/materialdesignicons.css" rel="stylesheet"
+	type="text/css" />
+
+<style>
+.composite {
+	
+}
+</style>
+</head>
+<body>
+	<script src="/js-lib/jquery.js"></script>
+	<script src="/js-lib/bootstrap.js"></script>
+	<script src="/js-gen/webface.js"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			// Buat composite
+			var composite = new webface.widgets.Composite($('.composite'));
+			var layout = new webface.layout.GridLayout();
+			layout.numColumns = 2;
+			composite.setLayout(layout);
+
+			var layoutData = new webface.layout.GridData();
+			layoutData.widthHint = 120;
+
+			// Enable text
+			var textEnable = new webface.widgets.Text(composite);
+			textEnable.setText("Enable");
+			textEnable.setLayoutData(layoutData);
+
+			// Disable text
+			var textDisable = new webface.widgets.Text(composite);
+			textDisable.setText("Disable");
+			textDisable.setEnabled(false);
+			textDisable.setLayoutData(layoutData);
+
+			// Tampilkan semua-nya
+			composite.pack();
+		});
+	</script>
+	<div class="composite"></div>
+</body>
+</html>

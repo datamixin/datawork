@@ -1,0 +1,90 @@
+<!--
+-- Copyright (c) 2020-2023 Datamixin.
+--
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+<head>
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="/css/webface.css" rel="stylesheet" type="text/css" />
+
+<style>
+.composite {
+	
+}
+</style>
+</head>
+<body>
+	<script src="/js-lib/jquery.js"></script>
+	<script src="/js-lib/jquery-ui.js"></script>
+	<script src="/js-lib/bootstrap.js"></script>
+	<script src="/js-gen/webface.js"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			// Layout
+			var gridLayout = new webface.layout.GridLayout();
+			gridLayout.marginHeight = 10;
+			gridLayout.marginWidth = 10;
+			
+			// Buat composite
+			var composite = new webface.widgets.Composite($('.composite'));
+			var layout = new webface.layout.GridLayout();
+			composite.setLayout(layout);
+			
+			var slider = new webface.widgets.Slider(composite);
+			
+			var layoutData = new webface.layout.GridData();
+			layoutData.widthHint = 320;
+			slider.setLayoutData(layoutData);
+			
+			slider.setMin(0);
+			slider.setMax(100);
+			slider.setStep(10);
+			slider.showTooltip(true);
+			
+			var currentLabel = new webface.widgets.Label(composite);
+			currentLabel.setText("Current Value: 0");
+			currentLabel.setLayoutData(new webface.layout.GridData());
+			
+			var endLabel = new webface.widgets.Label(composite);
+			endLabel.setText("Last Value: -");
+			endLabel.setLayoutData(new webface.layout.GridData());
+			
+			slider.addListener(webface.SetData, {
+				
+				handleEvent: function(event) {
+					var value = slider.getValue();
+					endLabel.setText("Last Value: " + value);
+				}
+			});
+			
+			slider.addListener(webface.Move, {
+				
+				handleEvent: function(event) {
+					var params = event.data;
+					var value = params.value;
+					currentLabel.setText("Current Value: " + value);
+				}
+			});
+			
+			// Tampilkan semua-nya
+			composite.relayout();
+			composite.pack();
+		});
+	</script>
+	<div class="composite"></div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+-- Copyright (c) 2020-2023 Datamixin.
+--
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<meta charset="utf-8">
+<style>
+circle {
+	stroke-width: 1.5px;
+}
+
+line {
+	stroke: #999;
+	stroke-width: 1.5px;
+}
+</style>
+<body>
+	<script src="/js-lib/d3-3.5.5.js"></script>
+	<script>
+		var width = 400, height = 300, size = 20;
+
+		var fill = d3.scale.category20();
+
+		var force = d3.layout.force().charge(-120);
+		force.linkDistance(30).size([ width, height ]);
+
+		var svg = d3.select("body").append("svg").attr("width", width);
+		svg.attr("height", height);
+
+		d3.json("er.json", function(error, json) {
+			if (error)
+				throw error;
+
+			var link = svg.selectAll("line").data(json.links);
+			link.enter().append("line");
+
+			var node = svg.selectAll("rect").data(json.nodes);
+			node.enter().append("rect");
+			node.attr("width", size * 2).attr("height", size / 2);
+			node.style("fill", function(d) {
+				return fill(d.group);
+			}).style("stroke", function(d) {
+				return d3.rgb(fill(d.group)).darker();
+			}).call(force.drag);
+
+			force.nodes(json.nodes).links(json.links).on("tick", tick);
+
+			// No fancy animation, tick amount varies based on number of nodes
+			force.start();
+			for (var i = 0; i < json.nodes.length * 1000; ++i) {
+				force.tick();
+			}
+			force.stop();
+
+			function tick(e) {
+				var k = 6 * e.alpha;
+
+				// Push sources up and targets down to form a weak tree.
+				link.each(function(d) {
+					d.source.y -= k, d.target.y += k;
+				}).attr("x1", function(d) {
+					return d.source.x;
+				}).attr("y1", function(d) {
+					return d.source.y;
+				}).attr("x2", function(d) {
+					return d.target.x;
+				}).attr("y2", function(d) {
+					return d.target.y;
+				});
+
+				node.attr("x", function(d) {
+					return d.x - size;
+				}).attr("y", function(d) {
+					return d.y - size / 4;
+				});
+
+			}
+		});
+	</script>

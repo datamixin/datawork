@@ -1,0 +1,137 @@
+{
+	"unit": {
+		"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+		"name": "trellis_barley",
+		"data": {
+			"url": "data/barley.json"
+		},
+		"mark": "point",
+		"height": 100,
+		"encoding": {
+			"row": {
+				"field": "site",
+				"type": "ordinal"
+			},
+			"x": {
+				"field": "yield",
+				"type": "quantitative"
+			},
+			"y": {
+				"field": "variety",
+				"type": "ordinal"
+			},
+			"color": {
+				"field": "year",
+				"type": "nominal"
+			}
+		}
+	},
+	"facet-columns": {
+		"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+		"name": "trellis_barley",
+		"data": {
+			"url": "data/barley.json"
+		},
+		"spec": {
+			"layer": [
+				{
+					"mark": "point",
+					"encoding": {
+						"x": {
+							"field": "yield",
+							"type": "quantitative"
+						},
+						"y": {
+							"field": "variety",
+							"type": "ordinal"
+						},
+						"color": {
+							"field": "year",
+							"type": "nominal"
+						}
+					}
+				},
+				{
+					"mark": "rule",
+					"encoding": {
+						"x": {
+							"aggregate": "mean",
+							"field": "yield"
+						}
+					}
+				}
+			]
+		},
+		"columns": 1,
+		"facet": {
+			"field": "site",
+			"type": "nominal"
+		},
+		"config": {
+			"view": {
+				"continuousWidth": 100,
+				"discreteHeight": 100
+			}
+		}
+	},
+	"facet-row-column": {
+		"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+		"name": "trellis_barley",
+		"data": {
+			"url": "data/barley.json"
+		},
+		"spec": {
+			"layer": [
+				{
+					"mark": "point",
+					"encoding": {
+						"x": {
+							"field": "yield",
+							"type": "quantitative"
+						},
+						"y": {
+							"field": "variety",
+							"type": "ordinal"
+						}
+					}
+				},
+				{
+					"mark": "rule",
+					"encoding": {
+						"x": {
+							"aggregate": "mean",
+							"field": "yield"
+						}
+					}
+				},
+				{
+					"mark": "rule",
+					"encoding": {
+						"x": {
+							"datum": 40
+						},
+						"color": {
+							"value": "red"
+						}
+					}
+				}
+			]
+		},
+		"facet": {
+			"row": {
+				"field": "year",
+				"type": "nominal"
+			},
+			"column": {
+				"field": "site",
+				"type": "nominal"
+			}
+		},
+		"config": {
+			"view": {
+				"continuousWidth": 100,
+				"discreteHeight": 100
+			}
+		}
+	}
+}

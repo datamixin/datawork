@@ -1,0 +1,59 @@
+/*
+ * Copyright (c) 2020-2023 Datamixin.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+import TutorialRegistry from "bekasi/ui/tutorials/TutorialRegistry";
+
+import DatasetGuidePanel from "padang/panels/DatasetGuidePanel";
+
+import ProjectTutorial from "padang/ui/tutorials/ProjectTutorial";
+
+import BlankProjectHomeMenu from "padang/ui/BlankProjectHomeMenu";
+
+export default class TimeseriesFigureTutorial extends ProjectTutorial {
+
+	constructor() {
+		super();
+		super.setLabel("Timeseries Figure");
+		super.click("." + BlankProjectHomeMenu.ICON);
+		super.click(".padang-dataset-present-view ." + DatasetGuidePanel.SAMPLE_ICON);
+		super.click(".title-area-dialog-body .viewers-tableViewer-item:nth-child(9) :nth-child(1)");
+		super.clickText(".dialog-shell .widgets-button", "OK");
+		super.clickText(".bekasi-workspace-fulldeck .btn-success", "OK");
+		this.waitProfile();
+		super.clickText(".bekasi-workspace-fulldeck .btn-success", "OK");
+		this.waitProfile();
+		super.clickItem(".padang-preparation-present-view .padang-preparation-present-figure", 1);
+		super.clickText(".webface-popup-contents .menu-popup-action", "Visualization...");
+
+		super.clickItem(".padang-value-field-anatomy-main-part", 1);
+		super.clickItem(".padang-value-field-anatomy-main-part .mdi-menu-down", 1);
+		super.clickText(".webface-popup-contents .menu-popup-action", "Encode As");
+		super.clickText(".webface-popup-contents .menu-popup-action", "x");
+
+		super.clickItem(".padang-value-field-anatomy-main-part", 2);
+		super.clickItem(".padang-value-field-anatomy-main-part .mdi-menu-down", 2);
+		super.clickText(".webface-popup-contents .menu-popup-action", "Encode As");
+		super.clickText(".webface-popup-contents .menu-popup-action", "y");
+
+		super.click(".vegazoo-mark-def-design-view .mdi-menu-down");
+		super.clickText(".webface-popup-contents .menu-popup-action", "Line");
+		super.clickText(".bekasi-workspace-fulldeck .btn-success", "OK");
+	}
+
+}
+
+let registry = TutorialRegistry.getInstance();
+registry.register(new TimeseriesFigureTutorial());

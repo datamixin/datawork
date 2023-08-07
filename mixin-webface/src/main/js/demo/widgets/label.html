@@ -1,0 +1,85 @@
+<!--
+-- Copyright (c) 2020-2023 Datamixin.
+--
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+<head>
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="/css/webface.css" rel="stylesheet" type="text/css" />
+<link href="/css/materialdesignicons.css" rel="stylesheet"
+	type="text/css" />
+
+<style>
+.composite {
+	
+}
+</style>
+</head>
+<body>
+	<script src="/js-lib/jquery.js"></script>
+	<script src="/js-lib/bootstrap.js"></script>
+	<script src="/js-gen/webface.js"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			var fillComposite = new webface.widgets.Composite($('.composite'));
+			fillComposite.setLayout(new webface.layout.FillLayout());
+
+			// Buat grid composite
+			var gridComposite = new webface.widgets.Composite(fillComposite);
+			var layout = new webface.layout.GridLayout();
+			gridComposite.setLayout(layout);
+
+			var layoutData = new webface.layout.GridData();
+			layoutData.grabExcessHorizontalSpace = true;
+			layoutData.heightHint = 24;
+
+			// Enable label
+			var labelEnable = new webface.widgets.Label(gridComposite);
+			labelEnable.setText("Enable");
+			labelEnable.setLayoutData(layoutData);
+
+			// Disable label
+			var labelDisable = new webface.widgets.Label(gridComposite);
+			labelDisable.setText("Disable");
+			labelDisable.setEnabled(false);
+			labelDisable.setLayoutData(layoutData);
+
+			// Enable image
+			var imageEnable = new webface.graphics.WebFontImage("mdi",
+					"mdi-file");
+			var labelImageEnable = new webface.widgets.Label(gridComposite);
+			labelImageEnable.setText("Enable Image");
+			labelImageEnable.prependImage(imageEnable);
+			labelImageEnable.setLayoutData(layoutData);
+
+			// Disable image
+			var imageDisable = new webface.graphics.WebFontImage("mdi",
+					"mdi-file");
+			var labelImageDisable = new webface.widgets.Label(gridComposite);
+			labelImageDisable.setText("Disable Image");
+			labelImageDisable.prependImage(imageEnable);
+			labelImageDisable.setEnabled(false);
+			labelImageDisable.setLayoutData(layoutData);
+
+			// Tampilkan semua-nya
+
+			fillComposite.setSize(120, 200);
+			fillComposite.pack();
+		});
+	</script>
+	<div class="composite"></div>
+</body>
+</html>

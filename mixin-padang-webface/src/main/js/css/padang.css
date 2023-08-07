@@ -1,0 +1,386 @@
+/*
+Copyright (c) 2020-2023 Datamixin.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+*/
+.padang-runspace-item-list-findout-title {
+	font-weight: 600;
+}
+
+.padang-runspace-item-list-findout-header-part {
+	color: #818a91;
+}
+
+.padang-runspace-item-list-findout-container {
+	background-color: #FFFFFF;
+}
+
+.padang-runspace-item-findout-view {
+	background: #F0F0F0;
+}
+
+.padang-runspace-item-findout-view.selected {
+	color: #08F;
+}
+
+.padang-runspace-item-findout-view:hover {
+	background-color: #E0E0E0;
+	cursor: pointer;
+}
+
+.padang-runspace-item-findout-view>span {
+	cursor: pointer;
+}
+
+.padang-bread-crumb-findout-panel-part.active {
+	cursor: pointer;
+}
+
+.padang-bread-crumb-findout-panel-part.active:hover {
+	color: #48a5ea;
+	cursor: pointer;
+}
+
+.padang-toolbox-icon-panel, .padang-toolset-icon-panel {
+	color: #888;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.padang-toolbox-icon-panel:hover, .padang-toolset-icon-panel:hover {
+	background-color: #D8D8D8;
+}
+
+.padang-toolbox-icon-panel.disabled, .padang-toolset-icon-panel.disabled
+	{
+	opacity: 0.3;
+}
+
+.padang-toolbox-icon-panel.disabled:hover, .padang-toolset-icon-panel.disabled:hover
+	{
+	background-color: transparent
+}
+
+.padang-icon-label-panel-callback {
+	color: #888;
+}
+
+.padang-icon-label-panel-callback:hover {
+	color: #549fff;
+	cursor: pointer;
+}
+
+.padang-icon-name-menu-panel-callback:hover {
+	color: #549fff;
+	cursor: pointer;
+}
+
+.padang-grid-row-list-panel:focus {
+	outline: 0px;
+}
+
+.padang-present-part-viewer .widgets-webFontIcon.mdi {
+	color: #888;
+}
+
+.padang-grid-marker-panel {
+	text-align: center;
+}
+
+.padang-grid-marker-panel.selected, .padang-grid-column-present-view.selected
+	{
+	background-color: #ffe69e;
+}
+
+.padang-guide-item-panel {
+	cursor: pointer;
+	color: #888;
+}
+
+.padang-guide-item-panel:hover, .padang-guide-item-panel:hover>.mdi {
+	color: #559FFF;
+}
+
+.padang-ingestor-outline-view {
+	border-radius: 4px;
+	border: 1px solid #E8E8E8;
+	background-color: #F8F8F8;
+}
+
+.padang-ingestor-outline-view.selected {
+	background-color: #f1f7ff;
+	border: 1px solid #559FFF;
+}
+
+.padang-instore-part-viewer .widgets-webFontIcon.mdi {
+	color: #888;
+}
+
+.padang-formula-text {
+	border: 1px solid #D8D8D8;
+	height: 26px;
+	border-radius: 3px;
+	text-indent: 4px;
+	user-select: text;
+}
+
+.padang-formula-text:disabled {
+	border-color: #CCC;
+	color: #CCC;
+}
+
+.padang-formula-text:focus {
+	outline: none;
+	border-color: #88B6FF;
+	background-color: #fff8c6;
+}
+
+.padang-formula-editor {
+	border: 1px solid #D8D8D8;
+	border-radius: 3px;
+	text-indent: 4px;
+	user-select: text;
+}
+
+.padang-formula-editor:disabled {
+	border-color: #CCC;
+	color: #CCC;
+}
+
+.padang-formula-editor:focus {
+	outline: none;
+	border-color: #88B6FF;
+	background-color: #fff8c6;
+}
+
+.padang-formula-panel {
+	background-color: #F8F8F8;
+}
+
+.padang-formula-container {
+	border-radius: 4px;
+}
+
+.padang-formula-container:focus {
+	border-color: #88B6FF;
+}
+
+.padang-prepare-part-viewer .widgets-webFontIcon.mdi {
+	color: #888;
+}
+
+.padang-mutation-prepare-view {
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+.padang-mutation-prepare-view:hover {
+	background-color: #ebf5ff;
+	cursor: pointer;
+}
+
+.padang-mutation-prepare-view.selected {
+	background-color: #ebf5ff;
+	border: 1px solid #81bfff;
+}
+
+.title-area-dialog-body .widgets-webFontIcon.mdi {
+	color: #888;
+}
+
+.padang-outline-part-viewer .widgets-webFontIcon.mdi {
+	color: #888;
+}
+
+.padang-sheet-outline-view {
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+.padang-sheet-outline-view:hover {
+	background-color: #ebf5ff;
+	cursor: pointer;
+}
+
+.padang-sheet-outline-view.selected {
+	background-color: #ebf5ff;
+	border: 1px solid #81bfff;
+}
+
+.padang-preparation-present-figure,
+	.padang-preparation-present-visualize {
+	color: #FFF;
+	background: #b643b7;
+	border: 1px solid #a23aa7;
+}
+
+.padang-preparation-present-figure:hover,
+	.padang-preparation-present-visualize:hover {
+	color: #FFF;
+	background: #943795;
+}
+
+.padang-builder-present-tryout:focus {
+	color: #FFF;
+	background: #7d2f7e;
+}
+
+.padang-builder-present-tryout,
+	.padang-preparation-present-visualize {
+	color: #FFF;
+	background: #b643b7;
+	border: 1px solid #a23aa7;
+}
+
+.padang-builder-present-tryout:hover,
+	.padang-preparation-present-visualize:hover {
+	color: #FFF;
+	background: #943795;
+}
+
+.padang-builder-present-tryout:focus {
+	color: #FFF;
+	background: #7d2f7e;
+}
+
+.padang-grid-row-list-panel .widgets-scrollBar {
+	opacity: 0.5;
+	transition: opacity 0.5s;
+}
+
+.padang-grid-row-list-panel .widgets-scrollBar:hover,
+	.padang-grid-row-list-panel .widgets-scrollBar:active {
+	opacity: 0.8;
+}
+
+.padang-propane-value-panel {
+	border: 1px solid transparent;
+}
+
+.padang-propane-value-panel-text-label {
+	text-overflow: ellipsis;
+}
+
+.padang-propane-value-panel:hover {
+	border: 1px solid #58A4FF;
+}
+
+.padang-propane-bar-figure-overlay {
+	border: 2px solid transparent;
+}
+
+.padang-propane-bar-figure-overlay.selected {
+	border: 2px solid #3884FF;
+}
+
+.padang-propane-value-panel .padang-propane-value-panel-menu-panel {
+	opacity: 0;
+}
+
+.padang-propane-value-panel:hover .padang-propane-value-panel-menu-panel
+	{
+	opacity: 1;
+}
+
+.padang-frequency-propane-icon-list-part .widgets-webFontIcon.mdi.selected
+	{
+	background-color: #D8D8D8;
+}
+
+.padang-frequency-propane-icon-list-part .widgets-webFontIcon.mdi:hover
+	{
+	background-color: #E8E8E8;
+}
+
+.padang-input-overtop-view {
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+.padang-input-overtop-view:hover {
+	background-color: #ebf5ff;
+	cursor: pointer;
+}
+
+.padang-input-overtop-view.selected {
+	background-color: #ebf5ff;
+	border: 1px solid #81bfff;
+}
+
+.padang-input-present-view, .padang-variable-present-view,
+	.padang-experiment-present-view {
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+.padang-input-present-view:hover, .padang-variable-present-view:hover,
+	.padang-experiment-present-view:hover {
+	background-color: #ebf5ff;
+	cursor: pointer;
+}
+
+.padang-input-present-view.selected, .padang-variable-present-view.selected,
+	.padang-experiment-present-view.selected {
+	background-color: #ebf5ff;
+	border: 1px solid #81bfff;
+}
+
+.padang-value-field-anatomy-main-part {
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+.padang-value-field-anatomy-main-part:hover {
+	background-color: #ebf5ff;
+	cursor: pointer;
+}
+
+.padang-value-field-anatomy-main-part.selected {
+	background-color: #ebf5ff;
+	border: 1px solid #81bfff;
+}
+
+.padang-preface-label-panel {
+	border: 1px solid transparent;
+}
+
+.padang-preface-label-panel:hover {
+	background-color: #ebf5ff;
+	border: 1px solid #d1efff;
+	cursor: pointer;
+}
+
+.padang-preface-label-panel.selected {
+	background-color: #ebf5ff;
+	border: 1px solid #81bfff;
+}
+
+.padang-dnd-feedback {
+	opacity: 0.5;
+}
+
+input[type=file]::file-selector-button {
+  margin-right: 10px;
+  border: none;
+  background: #559FFF;
+  padding: 7px 20px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+  background: #238FFF;
+}

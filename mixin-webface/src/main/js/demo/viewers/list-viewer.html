@@ -1,0 +1,145 @@
+<!--
+-- Copyright (c) 2020-2023 Datamixin.
+--
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+<head>
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="/css/materialdesignicons.css" rel="stylesheet"
+	type="text/css" />
+<link href="/css/webface.css" rel="stylesheet" type="text/css" />
+
+<style>
+.composite {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+.widgets-scrollBar-handler-control {
+	background-color: #D8D8D8;
+}
+</style>
+</head>
+<body>
+	<script src="/js-lib/jquery.js"></script>
+	<script src="/js-lib/jquery-ui.js"></script>
+	<script src="/js-lib/bootstrap.js"></script>
+	<script src="/js-gen/webface.js"></script>
+	<canvas id="canvas" width="800" height="20"></canvas>
+	<script type="text/javascript">
+		$(function() {
+
+			var columns = [ "Group", "Index", "Key", "Type", "Literal" ];
+			var records = [];
+			var storage = Object.keys(window);
+			storage.forEach(function(key, index) {
+				var value = Object.call(window, key);
+				records.push([ index, key, typeof (value), value.toString() ]);
+			});
+
+			var start = new Date().getTime();
+
+			var contentProvider = {
+				getElementCount : function(input) {
+					return input.length;
+				},
+				getElement : function(input, index) {
+					return records[index];
+				}
+			};
+			var labelProvider = {
+				getText : function(record) {
+					return record;
+				}
+			}
+
+			var FillLayout = webface.layout.FillLayout;
+			var FillData = webface.layout.FillData;
+			var Composite = webface.widgets.Composite;
+			var ListViewer = webface.viewers.ListViewer;
+			var root = $('.composite');
+
+			// Buat composite
+			var composite = new Composite(root);
+			var rootLayout = new FillLayout();
+			rootLayout.resizable = true;
+			composite.setLayout(rootLayout);
+
+			// Top composite
+			var top = new Composite(composite);
+			var topLayout = new FillLayout();
+			topLayout.resizable = true;
+			topLayout.type = webface.HORIZONTAL;
+			top.setLayout(topLayout);
+			var topData = new FillData();
+			topData.weight = 4;
+			top.setLayoutData(topData);
+
+			// Top Left Viewer
+			var topLeft = new ListViewer(top);
+			topLeft.setLabelProvider(labelProvider);
+			topLeft.setContentProvider(contentProvider);
+			topLeft.setInput(records);
+			var topLeftData = new FillData();
+			topLeftData.weight = 4;
+			topLeft.setLayoutData(topLeftData);
+
+			// Top Right Viewer
+			var topRight = new ListViewer(top, {
+				mark : webface.viewers.ListViewerStyle.SELECT
+			});
+			topRight.setEnabled(false);
+			topRight.setLabelProvider(labelProvider);
+			topRight.setContentProvider(contentProvider);
+			topRight.setInput(records);
+
+			// Bottom composite
+			var bottom = new Composite(composite);
+			var bottomLayout = new FillLayout();
+			bottomLayout.type = webface.HORIZONTAL;
+			bottom.setLayout(bottomLayout);
+
+			// Bottom Left Viewer
+			var bottomLeft = new ListViewer(bottom, {
+				mark : webface.viewers.ListViewerStyle.CHECK
+			});
+			var bottomLeftData = new FillData();
+			bottomLeftData.weight = 4;
+			bottomLeft.setLayoutData(bottomLeftData);
+			bottomLeft.setLabelProvider(labelProvider);
+			bottomLeft.setContentProvider(contentProvider);
+			bottomLeft.setInput(records);
+
+			// Bottom Right Viewer
+			var bottomRight = new ListViewer(bottom);
+			bottomRight.setLabelProvider(labelProvider);
+			bottomRight.setContentProvider(contentProvider);
+			bottomRight.setInput(records);
+
+			// Tampilkan semua-nya
+			composite.pack();
+
+			var end = new Date().getTime();
+
+			$(window).bind("resize", function() {
+				composite.pack();
+			});
+		});
+	</script>
+	<div class="composite"></div>
+</body>
+</html>

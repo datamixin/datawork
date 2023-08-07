@@ -1,0 +1,48 @@
+{
+	"folders": [
+		{
+			"path": "../mixin-base"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../mixin-padang-kisaran"
+		}
+	],
+	"settings": {
+		"editor.defaultFormatter": "ms-python.python",
+		"python.formatting.provider": "black",
+		"[python]": {
+			"editor.formatOnPaste": false
+		},
+		"python.terminal.activateEnvironment": true,
+		"python.defaultInterpreterPath": "${workspaceFolder}/src/main/python/.venv/bin/python",
+		"python.analysis.extraPaths": [
+			"./src/main/python",
+			"./src/main/python-gen",
+		],
+		"python.envFile": "${workspaceFolder}/python.env",
+		"python.testing.unittestArgs": [
+			"-v",
+			"-s",
+			"./src/test/python",
+			"-p",
+			"test_*.py"
+		],
+		"python.testing.pytestEnabled": false,
+		"python.testing.unittestEnabled": true,
+		"terminal.integrated.env.osx": {
+			"PYTHONPATH": "${workspaceFolder}/src/main/python:${workspaceFolder}/src/main/python-gen"
+		},
+		"[proto3]": {
+			"editor.defaultFormatter": "zxh404.vscode-proto3"
+		},
+		"[javascript]": {
+			"editor.defaultFormatter": "vscode.typescript-language-features"
+		},
+		"[typescriptreact]": {
+			"editor.defaultFormatter": "vscode.typescript-language-features"
+		},
+	}
+}

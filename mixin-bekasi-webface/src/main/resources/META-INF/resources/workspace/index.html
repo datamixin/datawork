@@ -1,0 +1,77 @@
+<!--
+-- Copyright (c) 2020-2023 Datamixin.
+--
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+
+<head>
+	<title>Project Workspace</title>
+	<script type="text/javascript" src="../webface/pace.js"></script>
+	<link href="../webface/webface.css" rel="stylesheet" type="text/css" />
+	<link href="../bekasi/bekasi-main.css" rel="stylesheet" type="text/css" />
+	<style>
+		.bekasi-workspace {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+			overflow: hidden;
+		}
+
+		.loading {
+			padding: 20px;
+		}
+
+		.loading-icon {
+			width: 24px;
+			height: 24px;
+			opacity: 0.32;
+			vertical-align: middle;
+		}
+
+		.loading-text {
+			color: #888;
+			font-style: italic;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+
+<body style="overflow: hidden;">
+	<script src="../webface/webface-lib.js" charset="UTF-8"></script>
+	<script src="../webface/webface-main.js" charset="UTF-8"></script>
+	<script src="../lawang/lawang.js"></script>
+	<script src="../sleman/sleman.js"></script>
+	<script src="../bekasi/bekasi-main.js" charset="UTF-8"></script>
+
+	<script type="text/javascript">
+		Pace.options.ajax.trackWebSockets = false;
+		$(function () {
+			var element = $('.bekasi-workspace');
+			var shell = new bekasi.ui.WorkspaceShell();
+			var panel = new bekasi.ui.WorkspacePanel(shell);
+			panel.createControl(element);
+		});
+	</script>
+	<div class="bekasi-workspace">
+		<div class="loading">
+			<img src="timer-sand-48.png" class="loading-icon">
+			<span class="loading-text" class="loading-text">Loading application...</span>
+		</div>
+	</div>
+	<div class="bekasi-pointer"></div>
+</body>
+
+</html>

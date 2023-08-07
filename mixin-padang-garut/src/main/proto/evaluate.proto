@@ -1,0 +1,190 @@
+// Copyright (c) 2020-2023 Datamixin.
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.andia.mixin.padang.garut";
+
+package dataminer;
+
+message EvaluateExpression {
+
+	oneof expression {
+
+		EvaluateText text = 1;
+		EvaluateNumber number = 2;
+		EvaluateLogical logical = 3;
+		EvaluateNull null = 4;
+		EvaluateObject object = 5;
+		EvaluateList list = 6;
+		EvaluateForeach foreach = 7;
+		EvaluateCall call = 8;
+		EvaluateAlias alias = 9;
+		EvaluateMember member = 10;
+		EvaluateReference reference = 11;
+		EvaluateBinary binary = 12;
+		EvaluateConditional conditional = 13;
+		EvaluateUnary unary = 14;
+		EvaluateLet let = 15;
+		EvaluateLambda lambda = 16;
+		
+  	}
+	
+}
+
+message EvaluateText {
+
+	string value = 1;
+
+}
+
+message EvaluateNumber {
+
+	oneof value {
+		int32 int32 = 1;
+		int64 int64 = 2;
+		float float = 3;
+		double double = 4;
+	}
+
+}
+
+message EvaluateLogical {
+
+	bool value = 1;
+
+}
+
+message EvaluateNull {
+	
+}
+
+message EvaluateObject {
+	
+	repeated EvaluateAssignment field = 1;
+
+}
+
+message EvaluateAssignment {
+
+	EvaluateIdentifier name = 1;
+	EvaluateExpression expression = 2;
+
+}
+
+message EvaluateIdentifier {
+
+	string name = 1;
+
+}
+
+message EvaluateList {
+ 
+	repeated EvaluateExpression element = 1;
+
+}
+
+message EvaluateForeach {
+ 
+	EvaluateExpression expression = 1;
+
+}
+
+message EvaluateCall {
+ 
+	EvaluatePointer callee = 1;
+	repeated EvaluateArgument argument = 2;
+
+}
+
+message EvaluatePointer {
+
+	oneof pointer {
+
+		EvaluateAlias alias = 1;
+		EvaluateMember member = 2;
+		EvaluateReference reference = 3;
+		
+  	}
+	
+}
+
+message EvaluateArgument {
+
+	oneof argument {
+
+		EvaluateExpression expression = 1;
+		EvaluateAssignment assignment = 2;
+		
+  	}
+
+}
+
+message EvaluateAlias {
+
+	string name = 1;
+
+}
+
+message EvaluateMember {
+
+	EvaluatePointer object = 1;
+	EvaluateExpression property = 2;
+
+}
+
+message EvaluateReference {
+
+	string name = 1;
+
+}
+
+message EvaluateBinary {
+
+	EvaluateExpression left = 1;
+	EvaluateExpression right = 2;
+	string operator = 3;
+
+}
+
+message EvaluateConditional {
+
+	EvaluateExpression logical = 1;
+	EvaluateExpression consequent = 2;
+	EvaluateExpression alternate = 3;
+
+}
+
+message EvaluateUnary {
+
+	string operator = 1;
+	EvaluateExpression argument = 2;
+
+}
+
+message EvaluateLet {
+
+	repeated EvaluateAssignment variable = 1;
+	EvaluateExpression result = 2;
+
+}
+
+message EvaluateLambda {
+
+	repeated EvaluateIdentifier parameter = 1;
+	EvaluateExpression expression = 2;
+
+}
+

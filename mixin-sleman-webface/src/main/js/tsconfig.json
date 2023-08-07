@@ -1,0 +1,40 @@
+{
+	"compilerOptions": {
+		"baseUrl": "./",
+		"paths": {
+			"sleman/*": [
+				"sleman/*"
+			],
+			"webface/*": [
+				"../../../../mixin-webface/src/main/js/webface/*"
+			]
+		},
+		"typeRoots": [
+			"../../../../mixin-webface/src/main/js/node_modules/@types"
+		],
+		"outDir": "build/sleman",
+		"target": "es2015",
+		"module": "es2015",
+		"moduleResolution": "node",
+		"declaration": true,
+		"emitDeclarationOnly": false,
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": false,
+		"noImplicitReturns": true,
+		"removeComments": true,
+		"noEmit": false,
+		"allowJs": false,
+		"skipLibCheck": false,
+		"skipDefaultLibCheck": false,
+		"suppressImplicitAnyIndexErrors": true,
+		"allowSyntheticDefaultImports": true
+	},
+	"compileOnSave": true,
+	"buildOnSave": true,
+	"files": [
+		"sleman/index.ts"
+	]
+}

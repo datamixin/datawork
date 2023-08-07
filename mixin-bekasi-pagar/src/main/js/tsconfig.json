@@ -1,0 +1,43 @@
+{
+	"compilerOptions": {
+		"baseUrl": "./",
+		"paths": {
+			"pagar/*": [
+				"pagar/*"
+			],
+			"webface/*": [
+				"../../../../mixin-webface/src/main/js/webface/*"
+			],
+			"bekasi/*": [
+				"../../../../mixin-bekasi-webface/src/main/js/bekasi/*"
+			]
+		},
+		"typeRoots": [
+			"../../../../mixin-webface/src/main/js/node_modules/@types"
+		],
+		"outDir": "build/pagar",
+		"target": "es2015",
+		"module": "es2015",
+		"moduleResolution": "node",
+		"declaration": true,
+		"emitDeclarationOnly": false,
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": false,
+		"noImplicitReturns": true,
+		"removeComments": true,
+		"noEmit": false,
+		"allowJs": false,
+		"skipLibCheck": false,
+		"skipDefaultLibCheck": false,
+		"suppressImplicitAnyIndexErrors": true,
+		"allowSyntheticDefaultImports": true
+	},
+	"compileOnSave": true,
+	"buildOnSave": true,
+	"files": [
+		"pagar/index.ts"
+	]
+}

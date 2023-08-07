@@ -1,0 +1,89 @@
+// Copyright (c) 2020-2023 Datamixin.
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.andia.mixin.padang.garut";
+option java_outer_classname = "FilestoreProto";
+
+package filestore;
+
+import "evaluate.proto";
+
+service Filestore {
+
+	rpc name(NameRequest) returns (NameResponse) {}
+
+	rpc resolve(PathRequest) returns (ResolveResponse) {}
+
+	rpc untitled(PathRequest) returns (UntitledResponse) {}
+
+	rpc identify(PathRequest) returns (IdentifyResponse) {}
+
+	rpc credential(CredentialRequest) returns (CredentialResponse) {}
+
+}
+
+message NameRequest {
+	
+	string uuid = 1;
+
+}
+
+message PathRequest {
+	
+	string current = 1;
+	string path = 2;
+
+}
+
+message CredentialRequest {
+	
+	string group = 1;
+	string name = 2;
+
+}
+
+message NameResponse {
+	
+	string name = 1;
+
+}
+
+message ResolveResponse {
+	
+	bool resolved = 1;
+	bool file = 2;
+
+}
+
+message UntitledResponse {
+	
+	bool exists = 1;
+
+}
+
+message IdentifyResponse {
+	
+	string uuid = 1;
+
+}
+
+message CredentialResponse {
+	
+	dataminer.EvaluateExpression credential = 1;
+
+}
+

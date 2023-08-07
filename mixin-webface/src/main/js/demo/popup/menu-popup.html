@@ -1,0 +1,73 @@
+<!--
+-- Copyright (c) 2020-2023 Datamixin.
+--
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+<head>
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="/css/webface.css" rel="stylesheet" type="text/css" />
+<link href="/css/materialdesignicons.css" rel="stylesheet"
+	type="text/css" />
+<style>
+#composite {
+	height: 24px;
+	width: 50px;
+	position: absolute;
+	left: 50px;
+	top: 40px;
+}
+</style>
+</head>
+<body>
+	<script src="/js-lib/jquery.js"></script>
+	<script src="/js-lib/jquery-ui.js"></script>
+	<script src="/js-lib/bootstrap.js"></script>
+	<script src="/js-gen/webface.js"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			// Buat composite
+			var composite = new webface.widgets.Composite($('#composite'));
+			composite.setLayout(new webface.layout.FillLayout());
+
+			var list = [];
+			var label = new webface.widgets.Label(composite);
+			label.setText("Select...");
+
+			var action = {
+				getActions : function() {
+					return [ {
+						getText : function() {
+							return "Menu"
+						},
+						run: function(){
+							
+						}
+					} ];
+				}
+			}
+
+			label.addListener(webface.Selection, {
+				handleEvent : function(event) {
+					var menu = new webface.action.MenuPopup(action);
+					menu.show(event);
+				}
+			});
+
+		});
+	</script>
+	<div id="composite"></div>
+</body>
+</html>

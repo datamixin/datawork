@@ -1,0 +1,16 @@
+Category;Title;FilePath;Options
+Tabular;Titanic;tabular/titanic.csv;={}
+Tabular;US Adult Census;tabular/adult-census.csv;={}
+Tabular;Autocar Miles Per Gallons;tabular/auto-mpg.csv;={}
+Tabular;Iris Flower;tabular/iris.csv;={}
+Tabular;Mushroom;tabular/mushroom.csv;={}
+Tabular;USA Housing;tabular/usa-housing.csv;={}
+Text;Stanford Sentiment 3 Category;text/stanford-sentiment-3.csv;={}
+Text;Stanford Sentiment 5 Category;text/stanford-sentiment-5.csv;={}
+Time Series;Air Passangers;time-series/air-passangers.csv;={parseDates:"=[0]"}
+Time Series;Global Economy;time-series/global-economy.csv;={}
+Time Series;Olympic Running;time-series/olympic-running.csv;={parseDates:"=[0]"}
+Time Series;Pharmaceutical Benefits Scheme;time-series/pharmaceutical-benefits-scheme.csv;={parseDates:"=[0]"}
+Time Series;Tourism;time-series/tourism.csv;={parseDates:"=[0]"}
+Time Series;Ansett Airline;time-series/ansett-airline.csv;={parseDates:"=[]"}
+Time Series;Victoria Electricity;time-series/victoria-electricity.csv;={parseDates:"=[0, 3]"}

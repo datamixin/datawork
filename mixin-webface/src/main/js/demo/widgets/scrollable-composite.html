@@ -1,0 +1,84 @@
+<!--
+-- Copyright (c) 2020-2023 Datamixin.
+--
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+<head>
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+
+<style>
+.composite {
+	
+}
+</style>
+</head>
+<body>
+	<script src="/js-lib/jquery.js"></script>
+	<script src="/js-lib/jquery-ui.js"></script>
+	<script src="/js-lib/bootstrap.js"></script>
+	<script src="/js-gen/webface.js"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			// Layout
+			var gridLayout = new webface.layout.GridLayout();
+			gridLayout.marginHeight = 0;
+			gridLayout.marginWidth = 0;
+			
+			// Buat composite
+			var composite = new webface.widgets.ScrollableComposite($('.composite'));
+			composite.setLayout(gridLayout);
+			composite.setExpandHorizontal(true);
+			composite.setExpandVertical(true);
+			
+			// Buat composite penampung
+			var content = new webface.widgets.Composite(composite);
+			content.setLayout(gridLayout);
+			var contentData = new webface.layout.GridData();
+			contentData.widthHint = 200;
+			contentData.heightHint = 600;
+			content.setLayoutData(contentData);
+
+			// Grid data
+			var gridData = new webface.layout.GridData();
+			gridData.widthHint = 200;
+			gridData.heightHint = 200;
+			
+			// Button 1
+			var button1 = new webface.widgets.Button(content);
+			button1.setText("Button 1");
+			button1.setLayoutData(gridData);
+			
+			// Button 2
+			var button2 = new webface.widgets.Button(content);
+			button2.setText("Button 2");
+			button2.setLayoutData(gridData);
+			
+			// Button 3
+			var button3 = new webface.widgets.Button(content);
+			button3.setText("Button 3");
+			button3.setLayoutData(gridData);
+			
+			composite.setContent(content);
+			composite.setSize(150, 150);
+			composite.relayout();
+			
+			// Tampilkan semua-nya
+			//composite.pack();
+		});
+	</script>
+	<div class="composite"></div>
+</body>
+</html>

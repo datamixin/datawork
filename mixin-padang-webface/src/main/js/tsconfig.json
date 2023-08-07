@@ -1,0 +1,49 @@
+{
+	"compilerOptions": {
+		"baseUrl": "./",
+		"paths": {
+			"padang/*": [
+				"padang/*"
+			],
+			"bekasi/*": [
+				"../../../../mixin-bekasi-webface/src/main/js/bekasi/*"
+			],
+			"sleman/*": [
+				"../../../../mixin-sleman-webface/src/main/js/sleman/*"
+			],
+			"lawang/*": [
+				"../../../../mixin-lawang-webface/src/main/js/lawang/*"
+			],
+			"webface/*": [
+				"../../../../mixin-webface/src/main/js/webface/*"
+			]
+		},
+		"typeRoots": [
+			"../../../../mixin-webface/src/main/js/node_modules/@types"
+		],
+		"outDir": "build/padang",
+		"target": "es2015",
+		"module": "es2015",
+		"moduleResolution": "node",
+		"declaration": true,
+		"emitDeclarationOnly": false,
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": false,
+		"noImplicitReturns": true,
+		"removeComments": true,
+		"noEmit": false,
+		"allowJs": false,
+		"skipLibCheck": false,
+		"skipDefaultLibCheck": false,
+		"suppressImplicitAnyIndexErrors": true,
+		"allowSyntheticDefaultImports": true
+	},
+	"compileOnSave": true,
+	"buildOnSave": true,
+	"files": [
+		"padang/index.ts"
+	]
+}

@@ -1,0 +1,29 @@
+{
+	"name": "mixin-padang-rinjani",
+	"version": "1.0.0",
+	"dependencies": {},
+	"devDependencies": {
+		"concat": "^1.0.3",
+		"cross-env": "^7.0.2",
+		"fs-extra": "^9.0.0",
+		"globby": "^10.0.1",
+		"merge-files": "^0.1.2",
+		"node-watch": "^0.6.4",
+		"sync-glob": "^1.4.0",
+		"ts-loader": "^6.2.1",
+		"typescript": "^3.8.3",
+		"webpack": "^4.42.0",
+		"webpack-cli": "^3.3.11"
+	},
+	"scripts": {
+		"npm-run-dev": "npm run cross-env-dev && npm run merge-copy",
+		"npm-run-prod": "npm run cross-env-prod && npm run merge-copy",
+		"npm-run-prod-source": "npm run cross-env-prod-source && npm run merge-copy",
+		"cross-env-dev": "cross-env MODE=development node_modules/webpack/bin/webpack.js --config webpack.config.js",
+		"cross-env-prod": "cross-env MODE=production node_modules/webpack/bin/webpack.js --config webpack.config.js",
+		"cross-env-prod-source": "cross-env MODE=production DEVTOOL=inline-source-map node_modules/webpack/bin/webpack.js --config webpack.config.js",
+		"merge-copy": "node merge-copy.js",
+		"watch-merge-copy": "node watch-merge-copy.js",
+		"concurrent-dev": "concurrently \"npm run cross-env-dev -- --watch\" \"npm run watch-merge-copy\""
+	}
+}

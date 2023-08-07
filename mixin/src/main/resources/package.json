@@ -1,0 +1,8 @@
+{
+	"name": "mixin",
+	"version": "2.0.0",
+	"devDependencies": {
+		"execa": "^4.0.0",
+		"node-watch": "^0.6.3"
+	}
+}

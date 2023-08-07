@@ -1,0 +1,50 @@
+<!--
+-- Copyright (c) 2020-2023 Datamixin.
+--
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+
+<head>
+	<title>Signup Form</title>
+	<script type="text/javascript" src="/webface/pace.js"></script>
+	<link href="/webface/webface.css" rel="stylesheet" type="text/css" />
+	<link href="/lawang/lawang.css" rel="stylesheet" type="text/css" />
+	<style>
+		.lawang {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+			overflow: hidden;
+		}
+	</style>
+</head>
+
+<body style="overflow: hidden;">
+	<script src="/webface/webface-lib.js" charset="UTF-8"></script>
+	<script src="/webface/webface-main.js" charset="UTF-8"></script>
+	<script src="/lawang/lawang.js" charset="UTF-8"></script>
+	<script type="text/javascript">
+		$(function () {
+			var element = $('.lawang');
+			var shell = new lawang.ui.ApplicationShell(lawang.ui.SignupForm);
+			var panel = new lawang.ui.ApplicationFrame(shell);
+			panel.createControl(element);
+		});
+	</script>
+	<div class="lawang"></div>
+</body>
+
+</html>

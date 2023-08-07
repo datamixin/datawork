@@ -1,0 +1,61 @@
+{
+	"compilerOptions": {
+		"baseUrl": "./",
+		"paths": {
+			"malang/*": [
+				"malang/*"
+			],
+			"@antv/g6/*": [
+				"node_modules/@antv/g6/lib/*"
+			],
+			"webface/*": [
+				"../../../../mixin-webface/src/main/js/webface/*"
+			],
+			"lawang/*": [
+				"../../../../mixin-lawang-webface/src/main/js/lawang/*"
+			],
+			"sleman/*": [
+				"../../../../mixin-sleman-webface/src/main/js/sleman/*"
+			],
+			"bekasi/*": [
+				"../../../../mixin-bekasi-webface/src/main/js/bekasi/*"
+			],
+			"padang/*": [
+				"../../../../mixin-padang-webface/src/main/js/padang/*"
+			],
+			"vegazoo/*": [
+				"../../../../mixin-padang-vegazoo/src/main/js/vegazoo/*"
+			],
+			"rinjani/*": [
+				"../../../../mixin-padang-rinjani/src/main/js/rinjani/*"
+			]
+		},
+		"typeRoots": [
+			"../../../../mixin-webface/src/main/js/node_modules/@types"
+		],
+		"outDir": "build/malang",
+		"target": "es2015",
+		"module": "es2015",
+		"moduleResolution": "node",
+		"declaration": true,
+		"emitDeclarationOnly": false,
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": false,
+		"noImplicitReturns": true,
+		"removeComments": true,
+		"noEmit": false,
+		"allowJs": false,
+		"skipLibCheck": false,
+		"skipDefaultLibCheck": false,
+		"suppressImplicitAnyIndexErrors": true,
+		"allowSyntheticDefaultImports": true
+	},
+	"compileOnSave": true,
+	"buildOnSave": true,
+	"files": [
+		"malang/index.ts"
+	]
+}

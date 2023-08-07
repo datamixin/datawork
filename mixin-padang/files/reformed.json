@@ -1,0 +1,104 @@
+{
+	"name": "MyTelkomsel_Kredivo_Reconcille",
+	"foresee": {
+		"eClass": "padang:XViewset",
+		"part": {
+			"eClass": "padang:XMixture",
+			"parts": [
+				{
+					"eClass": "padang:XCell",
+					"facet": {
+						"eClass": "padang:XOutcome",
+						"outside": "default",
+						"variable": {
+							"name": "MyTelkomsel Kredivo Elisa Summary",
+							"formula": "=MyTelkomsel_Kredivo_Elisa_Summary",
+							"properties": {
+								
+							}
+						},
+						"properties": {
+							"selection": "={part: \"cell\", row: 0, column: 17, label: \"settlement_amount\"}",
+							"created_date.format": "=\"yyyy-MM-dd\"",
+							"created_date.width": "=116",
+							"package_amount.format": "=\"#,##0\"",
+							"recharge_amount.format": "=\"#,##0\"",
+							"sales_amount.format": "=\"#,##0\"",
+							"sales_dpp.format": "=\"#,##0\"",
+							"sales_ppn.format": "=\"#,##0\"",
+							"net_sales_amount.format": "=\"#,##0\"",
+							"settlement_amount.format": "=\"#,##0\"",
+							"package_transaction.width": "=92",
+							"package_amount.width": "=92",
+							"recharge_transaction.width": "=82",
+							"recharge_amount.width": "=96",
+							"sales_transaction.width": "=81",
+							"sales_amount.width": "=94",
+							"sales_dpp.width": "=96",
+							"sales_ppn.width": "=87",
+							"total_discount.width": "=69",
+							"refund_amount.width": "=78",
+							"net_sales_transaction.width": "=73",
+							"net_sales_amount.width": "=87",
+							"refund_transaction.width": "=75",
+							"mdr_dpp.width": "=84",
+							"mdr_ppn.width": "=81",
+							"mdr_pph.width": "=89",
+							"settlement_amount.width": "=150"
+						}
+					}
+				},
+				{
+					"eClass": "padang:XCell",
+					"facet": {
+						"eClass": "padang:XOutcome",
+						"outside": "default",
+						"variable": {
+							"name": "MyTelkomsel Kredivo Partner Summary",
+							"formula": "=MyTelkomsel_Kredivo_Partner_Summary",
+							"properties": {
+								
+							}
+						},
+						"properties": {
+							"selection": "={part: \"cell\", row: 0, column: 17, label: \"settlement_amount\"}",
+							"transaction_date.format": "=\"yyyy-MM-dd\"",
+							"package_amount.format": "=\"#,##0\"",
+							"recharge_amount.format": "=\"#,##0\"",
+							"sales_amount.format": "=\"#,##0\"",
+							"sales_dpp.format": "=\"#,##0\"",
+							"sales_ppn.format": "=\"#,##0\"",
+							"net_sales_amount.format": "=\"#,##0\"",
+							"settlement_amount.format": "=\"#,##0\"",
+							"mdr_pph.width": "=91",
+							"settlement_amount.width": "=144",
+							"transaction_date.width": "=112",
+							"package_transaction.width": "=92",
+							"package_amount.width": "=95",
+							"recharge_transaction.width": "=82",
+							"recharge_amount.width": "=95",
+							"sales_transaction.width": "=89",
+							"sales_amount.width": "=95",
+							"sales_dpp.width": "=96",
+							"sales_ppn.width": "=92",
+							"total_discount.width": "=65",
+							"refund_transaction.width": "=72",
+							"refund_amount.width": "=81",
+							"net_sales_transaction.width": "=79",
+							"net_sales_amount.width": "=85",
+							"mdr_dpp.width": "=80",
+							"mdr_ppn.width": "=82"
+						}
+					}
+				},
+				{
+					"eClass": "padang:XCell",
+					"facet": null
+				}
+			],
+			"layout": "vertical",
+			"weights": "148,151,610"
+		},
+		"selection": "MyTelkomsel Kredivo Partner Summary"
+	}
+}

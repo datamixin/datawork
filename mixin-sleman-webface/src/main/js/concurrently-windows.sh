@@ -1,0 +1,18 @@
+##
+## Copyright (c) 2020-2023 Datamixin.
+##
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+##
+## You should have received a copy of the GNU General Public License
+## along with this program. If not, see <http://www.gnu.org/licenses/>.
+##
+cd /c/Development/eclipse/eclipse-rcp-photon-R-win32-x86_64/workspace/mixin-micro/mixin-sleman-webface/src/main/resources
+concurrently "node node_modules/webpack/bin/webpack.js --config webpack.config.js --watch" "node node_modules/sync-glob/bin/sync-glob.js --watch js-gen/*.js ../../../target/classes/js-gen"

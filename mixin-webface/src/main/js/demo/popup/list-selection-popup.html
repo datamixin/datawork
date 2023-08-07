@@ -1,0 +1,108 @@
+<!--
+-- Copyright (c) 2020-2023 Datamixin.
+--
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+<head>
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="/css/materialdesignicons.css" rel="stylesheet" type="text/css" />
+
+<style>
+#composite {
+    height: 24px;
+    width: 50px;
+    position:absolute;
+    left:50px;
+    top:40px;	
+}
+</style>
+</head>
+<body>
+	<script src="/js-lib/jquery.js"></script>
+	<script src="/js-lib/jquery-ui.js"></script>
+	<script src="/js-lib/bootstrap.js"></script>
+	<script src="/js-gen/webface.js"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			var columns = [ "Key", "Type", "Literal" ];
+			var records = [];
+			var storage = Object.keys(window);
+			storage.forEach(function(key) {
+				var value = Object.call(window, key);
+				records.push([ key, typeof (value), value.toString() ]);
+			});
+
+			var contentProvider = {
+				getElementCount : function(input) {
+					return input.length;
+				},
+				getElement : function(input, index) {
+					return records[index];
+				}
+			};
+			var labelProvider = {
+				getText : function(record) {
+					return record;
+				}
+			}
+
+			// Buat composite
+			var composite = new webface.widgets.Composite($('#composite'));
+			composite.setLayout(new webface.layout.FillLayout());
+
+			var list = [];
+			var label = new webface.widgets.Label(composite);
+			label.setText("Select...");
+			
+			var element = label.getElement();
+			element.css("cursor", "default");
+
+			label.addListener(webface.Selection, {
+				handleEvent: function(event){
+					var popup = new webface.popup.ListSelectionPopup();
+					
+		            popup.show(event, (checked) => {
+		            	
+		            	if(checked !== undefined){
+		            		
+		            		// Checked tidak undefined berarti OK di click
+			            	var text = "Checked: ";
+			            	list = [];
+			            	for(var i=0; i<checked.length; i++){
+			            		var element = checked[i];
+			            		list.push(element);
+			            		text += element[0];
+			            		if(i < checked.length - 1){
+			            			text += ", ";
+			            		}
+			            	}
+			            	label.setText(text);
+		            	}
+		                popup.dispose();
+		            });
+		            popup.setLabelProvider(labelProvider);
+					popup.setContentProvider(contentProvider);
+					popup.setInput(records);
+					popup.setChecked(list);
+				}
+			});
+			
+			
+		});
+	</script>
+	<div id="composite"></div>
+</body>
+</html>

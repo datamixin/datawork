@@ -1,0 +1,58 @@
+/*
+ * Copyright (c) 2020-2023 Datamixin.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+package com.andia.mixin.jepara.impl;
+
+import static com.andia.mixin.jepara.impl.DSL.name;
+import static com.andia.mixin.jepara.impl.DSL.names;
+
+import com.andia.mixin.jepara.Configuration;
+import com.andia.mixin.jepara.CreateIndex;
+import com.andia.mixin.jepara.Name;
+
+public class CreateIndexImpl extends QueryImpl implements CreateIndex {
+
+	private Name name;
+	private Name tableName;
+	private Name[] columnNames;
+
+	public CreateIndexImpl(Configuration configuration, Name name) {
+		super(configuration);
+		this.name = name;
+	}
+
+	@Override
+	public CreateIndex on(String tableName, String... columnNames) {
+		this.tableName = name(tableName);
+		this.columnNames = names(columnNames);
+		return this;
+	}
+
+	@Override
+	public String getLiteral() {
+		return newBuilder("CREATE INDEX")
+				.space()
+				.add(name)
+				.space()
+				.add("ON")
+				.space()
+				.add(tableName)
+				.space()
+				.openClose(columnNames)
+				.build();
+	}
+
+}

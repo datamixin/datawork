@@ -1,0 +1,36 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"webface/*": [
+				"webface/*"
+			]
+		},
+		"rootDir": "webface",
+		"outDir": "./build/webface",
+		"target": "es2015",
+		"module": "es2015",
+		"moduleResolution": "node",
+		"declaration": true,
+		"emitDeclarationOnly": false,
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": false,
+		"noImplicitReturns": true,
+		"removeComments": true,
+		"noEmit": false,
+		"allowJs": false,
+		"skipLibCheck": true,
+		"skipDefaultLibCheck": true,
+		"suppressImplicitAnyIndexErrors": true,
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true
+	},
+	"compileOnSave": true,
+	"buildOnSave": true,
+	"files": [
+		"webface/index.ts"
+	]
+}

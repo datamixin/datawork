@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Dataminer",
+      "type": "python",
+      "args": [
+        "--storage",
+        "./demo/storage"
+      ],
+      "request": "launch",
+      "program": "${workspaceFolder}/src/main/python/garut/dataminer.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceRoot}",
+      "justMyCode": false,
+      "env": {
+        "PYTHONPATH": "src/main/python-gen:../mixin-base/src/main/python"
+      }
+    },
+    {
+      "name": "Python: Debug Tests",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "purpose": [
+        "debug-test"
+      ],
+      "console": "integratedTerminal",
+      "justMyCode": false
+    }
+  ]
+}

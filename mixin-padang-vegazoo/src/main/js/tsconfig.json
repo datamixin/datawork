@@ -1,0 +1,61 @@
+{
+	"compilerOptions": {
+		"baseUrl": "./",
+		"paths": {
+			"vegazoo/*": [
+				"vegazoo/*"
+			],
+			"vega/*": [
+				"node_modules/vega-typings/*"
+			],
+			"vegaLite/*": [
+				"node_modules/vega-lite/src/*"
+			],
+			"vegaEmbed/*": [
+				"node_modules/vega-embed/src/*"
+			],
+			"webface/*": [
+				"../../../../mixin-webface/src/main/js/webface/*"
+			],
+			"lawang/*": [
+				"../../../../mixin-lawang-webface/src/main/js/lawang/*"
+			],
+			"sleman/*": [
+				"../../../../mixin-sleman-webface/src/main/js/sleman/*"
+			],
+			"bekasi/*": [
+				"../../../../mixin-bekasi-webface/src/main/js/bekasi/*"
+			],
+			"padang/*": [
+				"../../../../mixin-padang-webface/src/main/js/padang/*"
+			]
+		},
+		"typeRoots": [
+			"../../../../mixin-webface/src/main/js/node_modules/@types"
+		],
+		"outDir": "build/vegazoo",
+		"target": "es2015",
+		"module": "es2015",
+		"moduleResolution": "node",
+		"declaration": true,
+		"emitDeclarationOnly": false,
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": false,
+		"noImplicitReturns": true,
+		"removeComments": true,
+		"noEmit": false,
+		"allowJs": false,
+		"skipLibCheck": false,
+		"skipDefaultLibCheck": false,
+		"suppressImplicitAnyIndexErrors": true,
+		"allowSyntheticDefaultImports": true
+	},
+	"compileOnSave": true,
+	"buildOnSave": true,
+	"files": [
+		"vegazoo/index.ts"
+	]
+}

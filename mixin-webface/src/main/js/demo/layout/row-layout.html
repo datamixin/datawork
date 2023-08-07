@@ -1,0 +1,70 @@
+<!--
+-- Copyright (c) 2020-2023 Datamixin.
+--
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+<head>
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+
+<style>
+.composite {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+}
+</style>
+</head>
+<body>
+	<script src="/js-lib/jquery.js"></script>
+	<script src="/js-lib/jquery-ui.js"></script>
+	<script src="/js-lib/bootstrap.js"></script>
+	<script src="/js-gen/webface.js"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			var RowLayout = webface.layout.RowLayout;
+			var RowData = webface.layout.RowData;
+			var Composite = webface.widgets.Composite;
+			var Button = webface.widgets.Button;
+			var root = $('.composite');
+
+			// Buat composite
+			var composite = new Composite(root);
+			var layout = new RowLayout();
+			layout.spacing = 10;
+			layout.marginWidth = 10;
+			layout.marginHeight = 10;
+			composite.setLayout(layout);
+
+			for (var i = 0; i < 10; i++) {
+				var button = new Button(composite);
+				var layoutData = new RowData();
+				layoutData.width = 240;
+				layoutData.height = 180;
+				button.setLayoutData(layoutData);
+			}
+
+			// Tampilkan semua-nya
+			composite.pack();
+
+			$(window).bind("resize", function() {
+				composite.pack();
+			});
+		});
+	</script>
+	<div class="composite"></div>
+</body>
+</html>

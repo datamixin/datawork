@@ -1,0 +1,114 @@
+<!--
+-- Copyright (c) 2020-2023 Datamixin.
+--
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+--
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+<head>
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="/css/materialdesignicons.css" rel="stylesheet" type="text/css" />
+<link href="/css/webface.css" rel="stylesheet" type="text/css" />
+
+<style>
+.composite {
+	
+}
+</style>
+</head>
+<body>
+	<script src="/js-lib/jquery.js"></script>
+	<script src="/js-lib/bootstrap.js"></script>
+	<script src="/js-gen/webface.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			
+			var GridLayout = webface.layout.GridLayout;
+
+			var Label = webface.widgets.Label;
+			var Composite = webface.widgets.Composite;
+			var SlideItem = webface.widgets.SlideItem;
+
+			// Buat composite
+			var composite = new Composite($('.composite'));
+			var layout = new webface.layout.GridLayout();
+			composite.setLayout(layout);
+
+			// Slide tree
+			var slideTree = new webface.widgets.SlideTree(composite);
+			
+			var layoutData = new webface.layout.GridData();
+			layoutData.widthHint = 320;
+			layoutData.heightHint = 320;
+			slideTree.setLayoutData(layoutData);
+			
+			// Item Root
+			var rootItem = new SlideItem(slideTree);
+			rootItem.setText("Root");
+			
+			var rootLabel = new Label(slideTree);
+			rootLabel.setText("Next Child")
+			rootLabel.addSelectionListener({
+				widgetSelected: function(){
+					slideTree.setSelection(childItem);
+				}
+			});
+			rootItem.setControl(rootLabel);
+			
+			// Item Child
+			var childItem = new SlideItem(rootItem);
+			childItem.setText("Child");
+			
+			var childComposite = new Composite(slideTree);
+			childItem.setControl(childComposite);
+			childComposite.setLayout(new GridLayout());
+			
+			var firstGrandChildLink = new Label(childComposite);
+			firstGrandChildLink.setText("First Grand Child");
+			firstGrandChildLink.addSelectionListener({
+				widgetSelected: function(){
+					slideTree.setSelection(firstGrandChildItem);
+				}
+			});
+
+			var secondGrandChildLink = new Label(childComposite);
+			secondGrandChildLink.setText("Second Grand Child");
+			secondGrandChildLink.addSelectionListener({
+				widgetSelected: function(){
+					slideTree.setSelection(secondGrandChildItem);
+				}
+			});
+
+			// First Grand Child
+			var firstGrandChildItem = new SlideItem(childItem);
+			firstGrandChildItem.setText("First Grand Child");
+			
+			var firstGrandChildLabel = new Label(slideTree);
+			firstGrandChildLabel.setText("I'm first grand child")
+			firstGrandChildItem.setControl(firstGrandChildLabel);
+			
+			// Second Grand Child
+			var secondGrandChildItem = new SlideItem(childItem);
+			secondGrandChildItem.setText("Second Grand Child");
+			
+			var secondGrandChildLabel = new Label(slideTree);
+			secondGrandChildLabel.setText("I'm second grand child")
+			secondGrandChildItem.setControl(secondGrandChildLabel);
+			
+			// Tampilkan semua-nya
+			composite.pack();
+		});
+	</script>
+	<div class="composite"></div>
+</body>
+</html>
