@@ -27,7 +27,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
     <br />
     <a href="https://www.datamixin.com">Website</a>
     ·  
-    <a href="https://www.datamixin.com/docs">Docs</a>  
+    <a href="https://www.datamixin.com/docs/datawork">Docs</a>  
   </p>
 </p>
 
