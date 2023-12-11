@@ -56,5 +56,5 @@ To start using Datawork, run the following commands in a shell:
 curl https://raw.githubusercontent.com/datamixin/datawork/master/docker-compose.yml >> docker-compose.yml && docker compose up -d --remove-orphans
 ```
 
-You can now open your browser and go to [http://localhost:8080](http://localhost:8080) to
+You can now open your browser and go to [http://localhost:8050](http://localhost:8050) to
 connect to the application.
