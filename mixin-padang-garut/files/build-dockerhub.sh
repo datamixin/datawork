@@ -16,3 +16,4 @@
 VERSION=1.0.0
 docker build -f files/dataminer.Dockerfile --network host -t dataminer:$VERSION .
 docker tag dataminer:$VERSION datamixin/dataminer:$VERSION
+docker push datamixin/dataminer:$VERSION
