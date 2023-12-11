@@ -11,7 +11,9 @@
 // GNU Affero General Public License for more details.
 //
 // You should have received a copy of the GNU Affero General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.syntax = "proto3";
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+syntax = "proto3";
 
 option java_multiple_files = true;
 option java_package = "com.andia.mixin.padang.garut";
