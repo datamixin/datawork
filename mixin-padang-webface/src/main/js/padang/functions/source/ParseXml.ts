@@ -33,8 +33,8 @@ export default class ParseXml extends Function {
 
 	public static PATH_PLAN: ParameterPlan = ParameterPlanUtils.createTextPlan(
 		"path",
-		"Path",
-		"File or directory path"
+		"Content",
+		"XML content file"
 	);
 	public static XPATH_PLAN: ParameterPlan = ParameterPlanUtils.createTextPlan(
 		"xpath",
@@ -48,7 +48,7 @@ export default class ParseXml extends Function {
 			ParseXml.FUNCTION_NAME,
 			"Parse XML",
 			"mdi-xml",
-			"Create dataset from XML File"
+			"Create dataset from XML Content"
 		);
 		let list = plan.getParameterList();
 		list.add(ParseXml.PATH_PLAN);
