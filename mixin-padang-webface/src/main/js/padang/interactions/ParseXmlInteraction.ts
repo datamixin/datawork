@@ -23,7 +23,7 @@ import InteractionPlanRegistry from "padang/plan/InteractionPlanRegistry";
 export default class ParseXmlInteraction extends Interaction {
 
 	constructor(
-		public path: string,
+		public source: string,
 		public xpath: string,
 	) {
 		super(ParseXml.FUNCTION_NAME);
@@ -32,7 +32,7 @@ export default class ParseXmlInteraction extends Interaction {
 	public static getPlan(): InteractionPlan {
 		let plan = new InteractionPlan(ParseXml.getPlan(), 5);
 		let list = plan.getParameterList();
-		list.add(ParseXml.PATH_PLAN);
+		list.add(ParseXml.SOURCE_PLAN);
 		list.add(ParseXml.XPATH_PLAN);
 		return plan;
 	}

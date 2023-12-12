@@ -64,7 +64,7 @@ class TestParseXml(TestCase):
     def testParseXml(self):
         parse = ParseXml()
         result: pd.DataFrame = parse.execute(
-            None, {ParseXml.PATH: TestParseXml.XML, ParseXml.XPATH: TestParseXml.XPATH}
+            None, {ParseXml.SOURCE: TestParseXml.XML, ParseXml.XPATH: TestParseXml.XPATH}
         )
         self.assertEqual(2, len(result))
         self.assertEqual(3, len(result.columns))

@@ -13,7 +13,7 @@
  *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>. */
-import FunctionPlan from "padang/plan/FunctionPlan";
+ import FunctionPlan from "padang/plan/FunctionPlan";
 import ParameterPlan from "padang/plan/ParameterPlan";
 import ParameterPlanUtils from "padang/plan/ParameterPlanUtils";
 import FunctionPlanRegistry from "padang/plan/FunctionPlanRegistry";
@@ -25,15 +25,15 @@ export default class ParseXml extends Function {
 	public static FUNCTION_NAME = "ParseXml";
 
 	constructor(
-		public path: string,
+		public source: string,
 		public xpath: string,
 	) {
 		super(ParseXml.FUNCTION_NAME);
 	}
 
-	public static PATH_PLAN: ParameterPlan = ParameterPlanUtils.createTextPlan(
-		"path",
-		"Content",
+	public static SOURCE_PLAN: ParameterPlan = ParameterPlanUtils.createTextPlan(
+		"source",
+		"Source",
 		"XML content file"
 	);
 	public static XPATH_PLAN: ParameterPlan = ParameterPlanUtils.createTextPlan(
@@ -48,10 +48,10 @@ export default class ParseXml extends Function {
 			ParseXml.FUNCTION_NAME,
 			"Parse XML",
 			"mdi-xml",
-			"Create dataset from XML Content"
+			"Create dataset from XML File"
 		);
 		let list = plan.getParameterList();
-		list.add(ParseXml.PATH_PLAN);
+		list.add(ParseXml.SOURCE_PLAN);
 		list.add(ParseXml.XPATH_PLAN);
 		return plan;
 	}

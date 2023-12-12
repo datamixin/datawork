@@ -13,7 +13,7 @@
 ##
 ## You should have received a copy of the GNU Affero General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.##
-VERSION=1.0.1
+VERSION=1.0.2
 docker build -f files/dataminer.Dockerfile --network host -t dataminer:$VERSION .
 docker tag dataminer:$VERSION datamixin/dataminer:$VERSION
 docker push datamixin/dataminer:$VERSION

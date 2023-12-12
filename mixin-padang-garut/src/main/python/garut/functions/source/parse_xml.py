@@ -37,9 +37,6 @@ class ElementMap(dict):
 
     def _populate(self, node: ElementBase):
 
-        # Status populated
-        populated = True
-
         # Read attibutes
         for key in node.attrib:
             self[key] = node.attrib[key]
@@ -89,30 +86,30 @@ class ParseXml(Function):
 
     FUNCTION_NAME = "ParseXml"
 
-    PATH = "path"
+    SOURCE = "source"
     XPATH = "xpath"
     ELEMENTS = "elements"
 
     def execute(self, context: Context, options: Dict[str, any]) -> any:
-        path = options.get(ParseXml.PATH, None)
+        source = options.get(ParseXml.SOURCE, None)
         xpath = options.get(ParseXml.XPATH, "./*")
-        if type(path) == str:
-            if path is None or path == "":
+        if type(source) == str:
+            if source is None or source == "":
                 return pd.DataFrame()
             else:
-                return self.parse(path, xpath)
+                return self.parse(source, xpath)
 
         else:
-            return Exception("Invalid path type " + type(path).__name__)
+            return Exception("Invalid path type " + type(source).__name__)
 
-    def parse(self, path: str, xpath: str) -> pd.DataFrame:
+    def parse(self, source: str, xpath: str) -> pd.DataFrame:
 
         # Read rows from xpath
         tree: ElementBase = None
-        if len(path) > 0 and path[0] == "<":
-            tree = etree.fromstring(path)
+        if len(source) > 0 and source[0] == "<":
+            tree = etree.fromstring(source)
         else:
-            tree = etree.parse(path)
+            tree = etree.parse(source)
         elements: List[ElementBase] = tree.xpath(xpath)
         if isinstance(elements, list):
 
@@ -138,7 +135,7 @@ class ParseXml(Function):
         return dataFrame
 
 
-parameters = [ParseXml.PATH, ParseXml.XPATH]
+parameters = [ParseXml.SOURCE, ParseXml.XPATH]
 registry: FunctionRegistry = FunctionRegistry.getInstance()
 registry.register(ParseXml.FUNCTION_NAME, ParseXml, parameters)
 

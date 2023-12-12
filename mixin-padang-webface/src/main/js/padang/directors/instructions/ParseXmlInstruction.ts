@@ -23,7 +23,7 @@ import InstructionRegistry from "padang/directors/instructions/InstructionRegist
 export default class ParseXmlInstruction extends Instruction {
 
 	public createCaption(options: { [name: string]: XObject }): string {
-		let name = options[ParseXml.PATH_PLAN.getName()];
+		let name = options[ParseXml.SOURCE_PLAN.getName()];
 		return "Parse Xml " + name;
 	}
 
