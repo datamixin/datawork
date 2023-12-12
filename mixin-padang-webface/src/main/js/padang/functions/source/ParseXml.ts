@@ -33,7 +33,7 @@ export default class ParseXml extends Function {
 
 	public static SOURCE_PLAN: ParameterPlan = ParameterPlanUtils.createTextPlan(
 		"source",
-		"Source",
+		"Content",
 		"XML content file"
 	);
 	public static XPATH_PLAN: ParameterPlan = ParameterPlanUtils.createTextPlan(
