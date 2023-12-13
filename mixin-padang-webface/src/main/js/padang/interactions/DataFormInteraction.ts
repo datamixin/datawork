@@ -18,7 +18,7 @@ import DataForm from "padang/functions/source/DataForm";
 import Interaction from "padang/interactions/Interaction";
 
 import InteractionPlan from "padang/plan/InteractionPlan";
-import InteractionPlanRegistry from "padang/plan/InteractionPlanRegistry";
+// import InteractionPlanRegistry from "padang/plan/InteractionPlanRegistry";
 
 export default class DataFormInteraction extends Interaction {
 
@@ -38,5 +38,5 @@ export default class DataFormInteraction extends Interaction {
 
 }
 
-let registry = InteractionPlanRegistry.getInstance();
-registry.registerStarter(DataFormInteraction.getPlan());
+// let registry = InteractionPlanRegistry.getInstance();
+// registry.registerStarter(DataFormInteraction.getPlan());
