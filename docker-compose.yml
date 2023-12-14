@@ -1,13 +1,13 @@
 version: '3.3'
 services:
   dataminer:
-    image: 'datamixin/dataminer:1.0.1'
+    image: 'datamixin/dataminer:1.0.2'
     container_name: dataminer
     restart: always
     ports:
       - ${DATAMINER_PORT:-8980}:8980
   datapilot:
-    image: 'datamixin/datapilot:1.0.2'
+    image: 'datamixin/datapilot:1.0.3'
     container_name: datapilot
     restart: always
     depends_on:
