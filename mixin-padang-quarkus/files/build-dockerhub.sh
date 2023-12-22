@@ -13,7 +13,7 @@
 ##
 ## You should have received a copy of the GNU Affero General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.##
-VERSION=1.0.3
+VERSION=1.0.4
 docker build -f files/datapilot.Dockerfile --network host -t datapilot:$VERSION .
 docker tag datapilot:$VERSION datamixin/datapilot:$VERSION
 docker push datamixin/datapilot:$VERSION
