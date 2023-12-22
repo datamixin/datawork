@@ -28,7 +28,7 @@ import * as view from "padang/view/view";
 import RoutineNameSetRequest from "rinjani/requests/design/RoutineNameSetRequest";
 import RoutineSourceNameRequest from "rinjani/requests/design/RoutineSourceNameRequest";
 
-import VisualizationSelectionDialog from "rinjani/dialogs/VisualizationSelectionDialog";
+import RoutineSelectionDialog from "rinjani/dialogs/RoutineSelectionDialog";
 
 export default class RoutineDesignView extends ConductorView {
 
@@ -108,9 +108,9 @@ export default class RoutineDesignView extends ConductorView {
 	public promptSelection(): void {
 		let request = new RoutineSourceNameRequest();
 		this.conductor.submit(request, (_source: string) => {
-			let dialog = new VisualizationSelectionDialog(this.conductor);
+			let dialog = new RoutineSelectionDialog(this.conductor);
 			dialog.open((result: string) => {
-				if (result === VisualizationSelectionDialog.OK) {
+				if (result === RoutineSelectionDialog.OK) {
 					let selection = dialog.getSelection();
 					let request = new RoutineNameSetRequest(selection);
 					this.conductor.submit(request);

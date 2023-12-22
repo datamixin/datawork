@@ -51,15 +51,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.*/
 .rinjani-instant-result-output-container .webface-layout-fill-resize-handler:hover{
 	background-color: #81bfff;
 }
-.rinjani-visualization-selection-panel-item {
+.rinjani-routine-selection-panel-item {
 	background-color: #F8F8F8;
 	border:1px solid transparent;
 }
-.rinjani-visualization-selection-panel-item:hover {
+.rinjani-routine-selection-panel-item:hover {
 	background-color: #F4F4F4;
 	border:1px solid #E8E8E8;
 }
-.rinjani-visualization-selection-panel-item.selected {
+.rinjani-routine-selection-panel-item.selected {
 	background-color: #F0F0F0;
 	border:1px solid #81bfff;
 }

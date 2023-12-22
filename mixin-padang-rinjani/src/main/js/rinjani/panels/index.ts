@@ -14,13 +14,11 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 import RoutinePanel from "rinjani/panels/RoutinePanel";
-import PlotSelectionPanel from "rinjani/panels/PlotSelectionPanel";
-import VisualizationSelectionPanel from "rinjani/panels/VisualizationSelectionPanel";
+import RoutineSelectionPanel from "rinjani/panels/RoutineSelectionPanel";
 
 export {
 
 	RoutinePanel,
-	PlotSelectionPanel,
-	VisualizationSelectionPanel,
+	RoutineSelectionPanel,
 
 }

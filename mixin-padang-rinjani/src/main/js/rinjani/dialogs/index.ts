@@ -13,22 +13,21 @@
  *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>. */
-import PlotDialogPage from "rinjani/dialogs/PlotDialogPage";
+
 import RoutineReference from "rinjani/dialogs/RoutineReference";
-import RoutineDialogPage from "rinjani/dialogs/RoutineDialogPage";
-import PlotSelectionDialog from "rinjani/dialogs/PlotSelectionDialog";
 import RoutineWizardDialog from "rinjani/dialogs/RoutineWizardDialog";
+import RoutineSelectionDialog from "rinjani/dialogs/RoutineSelectionDialog";
+import RoutineMappingDialogPage from "rinjani/dialogs/RoutineMappingDialogPage";
+import RoutineSelectionDialogPage from "rinjani/dialogs/RoutineSelectionDialogPage";
 import RoutineWithDatasetWizardDialog from "rinjani/dialogs/RoutineWithDatasetWizardDialog";
-import VisualizationSelectionDialog from "rinjani/dialogs/VisualizationSelectionDialog";
 
 export {
 
-	PlotDialogPage,
 	RoutineReference,
-	RoutineDialogPage,
-	PlotSelectionDialog,
 	RoutineWizardDialog,
+	RoutineSelectionDialog,
+	RoutineMappingDialogPage,
+	RoutineSelectionDialogPage,
 	RoutineWithDatasetWizardDialog,
-	VisualizationSelectionDialog,
 
 }

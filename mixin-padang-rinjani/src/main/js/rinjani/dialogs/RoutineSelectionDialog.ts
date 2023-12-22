@@ -21,9 +21,9 @@ import TitleAreaDialog from "webface/dialogs/TitleAreaDialog";
 
 import * as widgets from "padang/widgets/widgets";
 
-import VisualizationSelectionPanel from "rinjani/panels/VisualizationSelectionPanel";
+import RoutineSelectionPanel from "rinjani/panels/RoutineSelectionPanel";
 
-export default class VisualizationSelectionDialog extends TitleAreaDialog {
+export default class RoutineSelectionDialog extends TitleAreaDialog {
 
 	public static LIST_WIDTH = 260;
 	public static ITEM_HEIGHT = 24;
@@ -31,12 +31,12 @@ export default class VisualizationSelectionDialog extends TitleAreaDialog {
 	public static INIT_HEIGHT = 600;
 
 	private conductor: Conductor = null;
-	private selectionPanel: VisualizationSelectionPanel = null;
+	private selectionPanel: RoutineSelectionPanel = null;
 
 	constructor(conductor: Conductor) {
 		super();
 		this.conductor = conductor;
-		this.setDialogSize(VisualizationSelectionDialog.INIT_WIDTH, VisualizationSelectionDialog.INIT_HEIGHT);
+		this.setDialogSize(RoutineSelectionDialog.INIT_WIDTH, RoutineSelectionDialog.INIT_HEIGHT);
 		this.setWindowTitle("Visualization Selection Dialog");
 		this.setTitle("Visualization Selection");
 		this.setMessage("Please select a visualization routine");
@@ -49,7 +49,7 @@ export default class VisualizationSelectionDialog extends TitleAreaDialog {
 	}
 
 	private createSelectionPanel(parent: Composite): void {
-		this.selectionPanel = new VisualizationSelectionPanel(this.conductor);
+		this.selectionPanel = new RoutineSelectionPanel(this.conductor);
 		this.selectionPanel.createControl(parent);
 		this.selectionPanel.setOnComplete(() => {
 			this.updatePageComplete();

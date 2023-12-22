@@ -29,8 +29,8 @@ import BlankProjectHomeMenu from "padang/ui/BlankProjectHomeMenu";
 
 import GraphicWizardDialog from "padang/dialogs/GraphicWizardDialog";
 
-import PlotDialogPage from "rinjani/dialogs/PlotDialogPage";
-import RoutineDialogPage from "rinjani/dialogs/RoutineDialogPage";
+import RoutineSelectionDialogPage from "rinjani/dialogs/RoutineSelectionDialogPage";
+import RoutineMappingDialogPage from "rinjani/dialogs/RoutineMappingDialogPage";
 
 import ProjectToolboxController from "padang/controller/toolbox/ProjectToolboxController";
 
@@ -40,16 +40,16 @@ export default class RoutineWizardDialog extends GraphicWizardDialog {
 
 	constructor(conductor: Conductor, premise: GraphicPremise) {
 		super(conductor, premise);
-		this.setDialogSize(980, 640);
+		this.setDialogSize(1020, 640);
 		this.setWindowTitle("Exploration Routine Wizard Dialog");
 		this.setTitle("Exploration Routine Wizard");
 		this.setMessage("Please specify exploration routine requirements");
 	}
 
 	protected addPages(parent: Composite): void {
-		let dialogPage = new PlotDialogPage(this, this.conductor, this.premise);
-		let reference = <PlotDialogPage>this.addPage(parent, dialogPage);
-		this.addPage(parent, new RoutineDialogPage(this, this.conductor, this.premise, reference));
+		let dialogPage = new RoutineSelectionDialogPage(this, this.conductor, this.premise);
+		let reference = <RoutineSelectionDialogPage>this.addPage(parent, dialogPage);
+		this.addPage(parent, new RoutineMappingDialogPage(this, this.conductor, this.premise, reference));
 	}
 
 	protected postPageSelected(page: WizardDialogPage): void {
@@ -61,7 +61,7 @@ export default class RoutineWizardDialog extends GraphicWizardDialog {
 	}
 
 	private refreshRoutinePage(page: WizardDialogPage): void {
-		if (page instanceof RoutineDialogPage) {
+		if (page instanceof RoutineMappingDialogPage) {
 			page.refresh();
 		}
 	}

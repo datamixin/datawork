@@ -29,7 +29,7 @@ import GridLayout from "webface/layout/GridLayout";
 import PlotListRequest from "rinjani/requests/PlotListRequest";
 import PlotPreviewRequest from "rinjani/requests/PlotPreviewRequest";
 
-export default class VisualizationSelectionPanel extends ConductorPanel {
+export default class RoutineSelectionPanel extends ConductorPanel {
 
 	public static ITEM_HEIGHT = 24;
 
@@ -52,13 +52,13 @@ export default class VisualizationSelectionPanel extends ConductorPanel {
 
 	private createFieldLabel(parent: Composite, text: string): void {
 		let label = this.createLabel(parent, text);
-		widgets.setGridData(label, true, VisualizationSelectionPanel.ITEM_HEIGHT);
+		widgets.setGridData(label, true, RoutineSelectionPanel.ITEM_HEIGHT);
 	}
 
 	private createLabel(parent: Composite, text: string): Label {
 		let label = new Label(parent);
 		label.setText(text);
-		widgets.css(label, "line-height", VisualizationSelectionPanel.ITEM_HEIGHT + "px");
+		widgets.css(label, "line-height", RoutineSelectionPanel.ITEM_HEIGHT + "px");
 		return label;
 	}
 
@@ -147,7 +147,7 @@ class VisualizationPanel extends ConductorPanel {
 
 	public createControl(parent: Composite): void {
 		this.composite = new Composite(parent);
-		widgets.addClass(this.composite, "rinjani-visualization-selection-panel-item");
+		widgets.addClass(this.composite, "rinjani-routine-selection-panel-item");
 		widgets.setGridLayout(this.composite, 1, 5, 5, 0, 0);
 		this.createNameLabel(this.composite);
 		this.composite.onSelection(() => {
@@ -159,14 +159,14 @@ class VisualizationPanel extends ConductorPanel {
 
 	private createNameLabel(parent: Composite): void {
 		this.nameLabel = new Label(parent);
-		widgets.css(this.nameLabel, "line-height", VisualizationSelectionPanel.ITEM_HEIGHT + "px");
-		widgets.setGridData(this.nameLabel, true, VisualizationSelectionPanel.ITEM_HEIGHT);
+		widgets.css(this.nameLabel, "line-height", RoutineSelectionPanel.ITEM_HEIGHT + "px");
+		widgets.setGridData(this.nameLabel, true, RoutineSelectionPanel.ITEM_HEIGHT);
 	}
 
 	public preview(name: string): void {
 		this.nameLabel.setText(name);
 		let layout = widgets.getGridLayout(this.composite);
-		let title = VisualizationSelectionPanel.ITEM_HEIGHT;
+		let title = RoutineSelectionPanel.ITEM_HEIGHT;
 		let width = VisualizationPanel.WIDTH;
 		let height = VisualizationPanel.HEIGHT - 2 * layout.marginHeight - layout.verticalSpacing - title;
 		let size = new Point(width - 20, height - 20);

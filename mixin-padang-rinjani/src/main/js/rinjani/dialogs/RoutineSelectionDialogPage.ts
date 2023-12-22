@@ -39,19 +39,21 @@ import * as directors from "rinjani/directors";
 
 import PlotListRequest from "rinjani/requests/PlotListRequest";
 import PlotDetailRequest from "rinjani/requests/PlotDetailRequest";
+import PlotPreviewRequest from "rinjani/requests/PlotPreviewRequest";
 
 import PlotListHandler from "rinjani/handlers/PlotListHandler";
 import PlotDetailHandler from "rinjani/handlers/PlotDetailHandler";
+import PlotPreviewHandler from "rinjani/handlers/PlotPreviewHandler";
 
 import RoutineReference from "rinjani/dialogs/RoutineReference";
 
-import PlotSelectionPanel from "rinjani/panels/PlotSelectionPanel";
+import RoutineSelectionPanel from "rinjani/panels/RoutineSelectionPanel";
 
 import ModelConverter from "rinjani/directors/converters/ModelConverter";
 
 import BasePlotPlanDirector from "rinjani/directors/BasePlotPlanDirector";
 
-export default class PlotDialogPage extends BaseWizardDialogPage implements RoutineReference {
+export default class RoutineSelectionDialogPage extends BaseWizardDialogPage implements RoutineReference {
 
 	private premise: GraphicPremise = null;
 	private routine: XRoutine = null;
@@ -59,7 +61,7 @@ export default class PlotDialogPage extends BaseWizardDialogPage implements Rout
 	private partViewer: PlotDialogPartViewer = null;
 
 	constructor(container: WizardContainer, conductor: Conductor, premise: GraphicPremise) {
-		super(container, conductor, "Plot Selection");
+		super(container, conductor, "Routine Selection");
 		this.premise = premise;
 		this.prepareRoutine();
 	}
@@ -111,7 +113,7 @@ class PlotDialogPartViewer extends BasePartViewer implements Conductor {
 
 	private conductor: Conductor = null;
 	private premise: GraphicPremise = null;
-	private selectionPanel: PlotSelectionPanel = null;
+	private selectionPanel: RoutineSelectionPanel = null;
 
 	constructor(conductor: Conductor, premise: GraphicPremise) {
 		super();
@@ -123,11 +125,11 @@ class PlotDialogPartViewer extends BasePartViewer implements Conductor {
 	public submit(request: Request, callback?: (data: any) => void): void {
 		let requestName = request.getName();
 		if (requestName === PlotListRequest.REQUEST_NAME) {
-			let handler = new PlotListHandler(<Controller><any>this);
-			handler.handle(request, callback);
+			new PlotListHandler(<Controller><any>this).handle(request, callback);
 		} else if (requestName === PlotDetailRequest.REQUEST_NAME) {
-			let handler = new PlotDetailHandler(<Controller><any>this);
-			handler.handle(request, callback);
+			new PlotDetailHandler(<Controller><any>this).handle(request, callback);
+		} else if (requestName === PlotPreviewRequest.REQUEST_NAME) {
+			new PlotPreviewHandler(<Controller><any>this).handle(request, callback);
 		} else {
 			this.conductor.submit(request, callback);
 		}
@@ -139,7 +141,7 @@ class PlotDialogPartViewer extends BasePartViewer implements Conductor {
 	}
 
 	public createControl(parent: Composite) {
-		this.selectionPanel = new PlotSelectionPanel(this);
+		this.selectionPanel = new RoutineSelectionPanel(this);
 		this.selectionPanel.createControl(parent);
 	}
 

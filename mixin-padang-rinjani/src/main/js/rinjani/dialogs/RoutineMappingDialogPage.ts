@@ -55,7 +55,7 @@ import OutputControllerFactory from "rinjani/controller/output/OutputControllerF
 
 import DesignControllerFactory from "rinjani/controller/design/DesignControllerFactory";
 
-export default class RoutineDialogPage extends BaseWizardDialogPage {
+export default class RoutineMappingDialogPage extends BaseWizardDialogPage {
 
 	private premise: GraphicPremise = null;
 	private reference: RoutineReference = null;
